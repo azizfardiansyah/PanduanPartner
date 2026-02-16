@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOP Partner — KRESA</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #22263a;
+    --border: #2e3348;
+    --purple: #7c6ff7;
+    --purple-light: #a59dff;
+    --teal: #2dd4bf;
+    --green: #22c55e;
+    --yellow: #fbbf24;
+    --red: #f87171;
+    --orange: #fb923c;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --dim: #475569;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* Topbar */
+  .topbar {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .topbar-title { font-weight: 700; font-size: 15px; }
+
+  .topbar-badge {
+    background: rgba(124,111,247,0.15);
+    border: 1px solid rgba(124,111,247,0.3);
+    color: var(--purple-light);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    text-transform: uppercase;
+  }
+
+  .topbar-live {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .live-dot {
+    width: 7px; height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 40px 24px 32px;
+  }
+
+  .hero-icon {
+    width: 64px; height: 64px;
+    background: rgba(124,111,247,0.12);
+    border: 1px solid rgba(124,111,247,0.25);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    margin: 0 auto 16px;
+  }
+
+  .hero h1 {
+    font-size: clamp(22px, 4vw, 32px);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+  }
+
+  .hero-sub { color: var(--muted); font-size: 13px; }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 24px 32px;
+    flex-wrap: wrap;
+  }
+
+  .tab {
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+
+  .tab:hover { color: var(--text); border-color: var(--dim); }
+  .tab.active {
+    background: rgba(124,111,247,0.15);
+    border-color: var(--purple);
+    color: var(--purple-light);
+  }
+
+  /* Content */
+  .content {
+    max-width: 580px;
+    margin: 0 auto;
+    padding: 0 20px 80px;
+  }
+
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+
+  /* Arrow */
+  .arrow {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .arrow-line {
+    width: 2px; height: 28px;
+    background: var(--border);
+  }
+
+  .arrow-head {
+    width: 0; height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 9px solid var(--border);
+  }
+
+  /* START/END */
+  .node-cap { display: flex; justify-content: center; }
+
+  .cap-pill {
+    background: rgba(124,111,247,0.15);
+    border: 2px solid var(--purple);
+    color: var(--purple-light);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding: 10px 32px;
+    border-radius: 100px;
+  }
+
+  .cap-pill.end {
+    background: rgba(34,197,94,0.1);
+    border-color: var(--green);
+    color: var(--green);
+  }
+
+  /* Step card */
+  .step-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    transition: border-color 0.2s, transform 0.15s;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .step-card:hover { border-color: var(--purple); transform: translateY(-2px); }
+
+  .step-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .step-icon {
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .step-num {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 3px;
+  }
+
+  .step-title { font-size: 15px; font-weight: 700; margin-bottom: 5px; }
+
+  .step-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+  .step-desc strong { color: var(--text); }
+
+  .step-tags {
+    display: flex;
+    gap: 6px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .tag-green  { background: rgba(34,197,94,0.1);   color: var(--green); }
+  .tag-purple { background: rgba(124,111,247,0.1); color: var(--purple-light); }
+  .tag-teal   { background: rgba(45,212,191,0.1);  color: var(--teal); }
+  .tag-yellow { background: rgba(251,191,36,0.1);  color: var(--yellow); }
+  .tag-red    { background: rgba(248,113,113,0.1); color: var(--red); }
+  .tag-orange { background: rgba(251,146,60,0.1);  color: var(--orange); }
+
+  /* Icon backgrounds */
+  .bg-purple { background: rgba(124,111,247,0.12); }
+  .bg-teal   { background: rgba(45,212,191,0.12); }
+  .bg-green  { background: rgba(34,197,94,0.12); }
+  .bg-yellow { background: rgba(251,191,36,0.12); }
+  .bg-red    { background: rgba(248,113,113,0.12); }
+  .bg-blue   { background: rgba(96,165,250,0.12); }
+  .bg-orange { background: rgba(251,146,60,0.12); }
+  .bg-pink   { background: rgba(244,114,182,0.12); }
+
+  /* Branch */
+  .branch-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    animation: fadeUp 0.4s ease both;
+    transition: border-color 0.2s;
+  }
+
+  .branch-box:hover { border-color: var(--purple); }
+
+  .branch-header {
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .branch-title { font-weight: 700; font-size: 15px; }
+  .branch-sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  .branch-paths { display: grid; grid-template-columns: 1fr 1fr; }
+
+  .branch-path { padding: 16px; }
+  .branch-path:first-child { border-right: 1px solid var(--border); }
+
+  .branch-path-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .label-approve { color: var(--green); }
+  .label-warn    { color: var(--yellow); }
+  .label-reject  { color: var(--red); }
+
+  .branch-item {
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    align-items: flex-start;
+    gap: 7px;
+    margin-bottom: 6px;
+  }
+
+  .branch-item::before {
+    content: '';
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .path-approve .branch-item::before { background: var(--green); }
+  .path-warn    .branch-item::before { background: var(--yellow); }
+  .path-reject  .branch-item::before { background: var(--red); }
+
+  /* Final card */
+  .final-card {
+    background: linear-gradient(135deg, rgba(124,111,247,0.12), rgba(45,212,191,0.08));
+    border: 1px solid rgba(124,111,247,0.3);
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    animation: fadeUp 0.4s ease both;
+  }
+
+  .final-icon { font-size: 28px; margin-bottom: 10px; }
+  .final-title { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
+  .final-desc { font-size: 12px; color: var(--muted); }
+
+  .final-badges {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+
+  /* Aturan tab */
+  .rule-section { margin-bottom: 28px; }
+
+  .rule-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .rule-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+  }
+
+  .rule-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px;
+    transition: border-color 0.2s;
+  }
+
+  .rule-card:hover { border-color: var(--dim); }
+  .rule-card.danger { border-left: 3px solid var(--red); }
+  .rule-card.warn   { border-left: 3px solid var(--yellow); }
+  .rule-card.ok     { border-left: 3px solid var(--green); }
+
+  .rule-icon { font-size: 20px; margin-bottom: 10px; }
+  .rule-name { font-weight: 600; font-size: 13px; margin-bottom: 6px; }
+  .rule-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+  /* Hak & Kewajiban */
+  .hak-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 480px) {
+    .hak-grid { grid-template-columns: 1fr; }
+    .branch-paths { grid-template-columns: 1fr; }
+    .branch-path:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+  }
+
+  .hak-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .hak-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hak-label.green { color: var(--green); }
+  .hak-label.red   { color: var(--red); }
+
+  .hak-item {
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 8px;
+    align-items: flex-start;
+    line-height: 1.5;
+  }
+
+  .hak-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+
+  .dot-green { background: var(--green); }
+  .dot-red   { background: var(--red); }
+
+  /* Animation delays */
+  .s1  { animation-delay: 0.05s; }
+  .s2  { animation-delay: 0.1s; }
+  .s3  { animation-delay: 0.15s; }
+  .s4  { animation-delay: 0.2s; }
+  .s5  { animation-delay: 0.25s; }
+  .s6  { animation-delay: 0.3s; }
+  .s7  { animation-delay: 0.35s; }
+  .s8  { animation-delay: 0.4s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <span>🤝</span>
+  <span class="topbar-title">SOP Partner — KRESA</span>
+  <span class="topbar-badge">Partner</span>
+  <div class="topbar-live">
+    <div class="live-dot"></div>
+    LIVE
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-icon">🤝</div>
+  <h1>SOP Partner</h1>
+  <p class="hero-sub">Panduan kerja Partner · Freelance · Sesuai Kontrak</p>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('alur')">📋 Alur Kerja</div>
+  <div class="tab" onclick="showTab('aturan')">⚖️ Aturan & Ketentuan</div>
+  <div class="tab" onclick="showTab('hak')">📑 Hak & Kewajiban</div>
+</div>
+
+<div class="content">
+
+  <!-- ALUR KERJA -->
+  <div class="tab-pane active" id="alur">
+
+    <div class="node-cap">
+      <div class="cap-pill">START</div>
+    </div>
+
+    <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
+
+    <!-- 1. Bergabung -->
+    <div class="step-card s1">
+      <div class="step-top">
+        <div class="step-icon bg-purple">📋</div>
+        <div>
+          <div class="step-num">Langkah 01</div>
+          <div class="step-title">Pendaftaran & Kontrak</div>
+          <div class="step-desc">Daftar via aplikasi → Owner review → Akun diupgrade ke Partner. <strong>Kontrak kerja ditandatangani</strong> sebelum mulai aktif — memuat tugas, komisi, dan ketentuan lainnya</div>
+          <div class="step-tags">
+            <span class="tag tag-purple">Kontrak Wajib</span>
+            <span class="tag tag-yellow">Owner Upgrade Akun</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
+
+    <!-- 2. Promosi -->
+    <div class="step-card s2">
+      <div class="step-top">
+        <div class="step-icon bg-teal">📣</div>
+        <div>
+          <div class="step-num">Langkah 02</div>
+          <div class="step-title">Promosi & Pencarian Nasabah</div>
+          <div class="step-desc">Partner menjalankan tugas sesuai kontrak — umumnya mencari calon nasabah melalui jaringan pribadi, sosial media, atau komunitas lokal</div>
+          <div class="step-tags">
+            <span class="tag tag-teal">Sesuai Kontrak</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
+
+    <!-- 3. Referral -->
+    <div class="step-card s3">
+      <div class="step-top">
+        <div class="step-icon bg-blue">🔗</div>
+        <div>
+          <div class="step-num">Langkah 03</div>
+          <div class="step-title">Referral & Onboarding Nasabah</div>
+          <div class="step-desc">Bantu calon nasabah mendaftar di aplikasi. Pastikan referral tercatat agar komisi terhitung otomatis. Dampingi proses pengisian dokumen jika diperlukan</div>
+          <div class="step-tags">
+            <span class="tag tag-green">✓ Referral Tercatat</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
+
+    <!-- 4. Proses di Owner -->
+    <div class="step-card s4">
+      <div class="step-top">
+        <div class="step-icon bg-yellow">⏳</div>
+        <div>
+          <div class="step-num">Langkah 04</div>
+          <div class="step-title">Proses Verifikasi & Approval oleh Owner</div>
+          <div class="step-desc">Setelah nasabah mendaftar, seluruh proses verifikasi, analisa, dan keputusan ada di tangan Owner. Partner <strong>tidak terlibat</strong> di proses internal ini</div>
+          <div class="step-tags">
+            <span class="tag tag-yellow">Ditangani Owner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
+
+    <!-- 5. Hasil approval — branch -->
+    <div class="branch-box s5">
+      <div class="branch-header">
+        <div class="step-icon bg-purple">⚖️</div>
+        <div>
+          <div class="branch-title">Hasil Approval</div>
+          <div class="branch-sub">Keputusan di tangan Owner</div>
+        </div>
+      </div>
+      <div class="branch-paths">
+        <div class="branch-path path-approve">
+          <div class="branch-path-label label-approve">✓ Disetujui</div>
+          <div class="branch-item">Akad & kontrak berjalan</div>
+          <div class="branch-item">Dana / barang cair ke nasabah</div>
+          <div class="branch-item">Komisi Partner mulai terhitung</div>
+        </div>
+        <div class="branch-path path-reject">
+          <div class="branch-path-label label-reject">✗ Ditolak</div>
+          <div class="branch-item">Nasabah dinotifikasi Owner</div>
+          <div class="branch-item">Tidak ada komisi untuk transaksi ini</div>
+          <div class="branch-item">Partner bisa cari nasabah lain</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
+
+    <!-- 6. Monitoring -->
+    <div class="step-card s6">
+      <div class="step-top">
+        <div class="step-icon bg-orange">🔔</div>
+        <div>
+          <div class="step-num">Langkah 06</div>
+          <div class="step-title">Ingatkan Jadwal Bayar Nasabah</div>
+          <div class="step-desc">Partner membantu mengingatkan nasabah referral menjelang jatuh tempo cicilan. Ini mengurangi risiko kredit macet dan menjaga kelancaran komisi Partner</div>
+          <div class="step-tags">
+            <span class="tag tag-orange">Opsional tapi Dianjurkan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
+
+    <!-- 7. Nasabah macet — branch -->
+    <div class="branch-box s7">
+      <div class="branch-header">
+        <div class="step-icon bg-red">⚠️</div>
+        <div>
+          <div class="branch-title">Jika Nasabah Macet</div>
+          <div class="branch-sub">Nasabah referral tidak membayar</div>
+        </div>
+      </div>
+      <div class="branch-paths">
+        <div class="branch-path path-warn">
+          <div class="branch-path-label label-warn">⚡ Kewajiban Partner</div>
+          <div class="branch-item">Lapor segera ke Owner</div>
+          <div class="branch-item">Bantu informasi kontak nasabah</div>
+          <div class="branch-item">Tidak boleh tagih sendiri</div>
+        </div>
+        <div class="branch-path path-reject">
+          <div class="branch-path-label label-reject">✗ Dilarang</div>
+          <div class="branch-item">Pegang / terima uang nasabah</div>
+          <div class="branch-item">Negosiasi sendiri tanpa Owner</div>
+          <div class="branch-item">Ancam atau intimidasi nasabah</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
+
+    <!-- 8. Komisi -->
+    <div class="step-card s8">
+      <div class="step-top">
+        <div class="step-icon bg-green">💰</div>
+        <div>
+          <div class="step-num">Langkah 08</div>
+          <div class="step-title">Penerimaan Komisi / Margin Sharing</div>
+          <div class="step-desc">Komisi dihitung otomatis di aplikasi berdasarkan transaksi nasabah referral yang berhasil. Pembayaran dilakukan <strong>sesuai jadwal dan skema yang tertulis di kontrak</strong></div>
+          <div class="step-tags">
+            <span class="tag tag-green">Sesuai Kontrak</span>
+            <span class="tag tag-teal">Otomatis di App</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
+
+    <!-- Final -->
+    <div class="final-card">
+      <div class="final-icon">🚀</div>
+      <div class="final-title">Partner Aktif & Konsisten</div>
+      <div class="final-desc">Partner dengan performa baik berpeluang mendapat tugas lebih, komisi lebih tinggi, dan kerjasama jangka panjang sesuai perkembangan kontrak</div>
+      <div class="final-badges">
+        <span class="tag tag-green">Komisi Bertambah</span>
+        <span class="tag tag-purple">Kontrak Diperpanjang</span>
+      </div>
+    </div>
+
+    <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
+
+    <div class="node-cap">
+      <div class="cap-pill end">END</div>
+    </div>
+
+  </div>
+
+  <!-- ATURAN & KETENTUAN -->
+  <div class="tab-pane" id="aturan">
+
+    <div class="rule-section">
+      <div class="rule-title">Yang Wajib Dipatuhi</div>
+      <div class="rule-grid">
+        <div class="rule-card ok">
+          <div class="rule-icon">📄</div>
+          <div class="rule-name">Kontrak adalah Acuan Utama</div>
+          <div class="rule-desc">Semua tugas, komisi, dan ketentuan mengikuti apa yang tertulis di kontrak yang sudah ditandatangani</div>
+        </div>
+        <div class="rule-card ok">
+          <div class="rule-icon">🔗</div>
+          <div class="rule-name">Referral Wajib Dicatat di App</div>
+          <div class="rule-desc">Nasabah harus didaftarkan melalui sistem agar referral tercatat dan komisi terhitung otomatis</div>
+        </div>
+        <div class="rule-card warn">
+          <div class="rule-icon">📢</div>
+          <div class="rule-name">Lapor Jika Ada Masalah</div>
+          <div class="rule-desc">Nasabah macet, keluhan, atau situasi tidak biasa wajib dilaporkan ke Owner — jangan ditangani sendiri</div>
+        </div>
+        <div class="rule-card warn">
+          <div class="rule-icon">🤐</div>
+          <div class="rule-name">Jaga Kerahasiaan Data</div>
+          <div class="rule-desc">Data nasabah bersifat rahasia — tidak boleh disebarkan ke pihak luar dalam bentuk apapun</div>
+        </div>
+        <div class="rule-card danger">
+          <div class="rule-icon">🚫</div>
+          <div class="rule-name">Dilarang Pegang Uang Nasabah</div>
+          <div class="rule-desc">Semua transaksi dana langsung ke rekening Owner. Partner tidak boleh menerima atau memegang uang nasabah dalam kondisi apapun</div>
+        </div>
+        <div class="rule-card danger">
+          <div class="rule-icon">⛔</div>
+          <div class="rule-name">Dilarang Negosiasi Sendiri</div>
+          <div class="rule-desc">Penyelesaian kredit macet atau renegosisasi kontrak nasabah sepenuhnya wewenang Owner</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HAK & KEWAJIBAN -->
+  <div class="tab-pane" id="hak">
+
+    <div class="hak-grid">
+      <div class="hak-box">
+        <div class="hak-label green">✓ Hak Partner</div>
+        <div class="hak-item"><div class="hak-dot dot-green"></div><span>Menerima komisi sesuai skema kontrak</span></div>
+        <div class="hak-item"><div class="hak-dot dot-green"></div><span>Akses dashboard komisi & referral di aplikasi</span></div>
+        <div class="hak-item"><div class="hak-dot dot-green"></div><span>Mendapat informasi produk terbaru dari Owner</span></div>
+        <div class="hak-item"><div class="hak-dot dot-green"></div><span>Transparansi perhitungan komisi via sistem</span></div>
+        <div class="hak-item"><div class="hak-dot dot-green"></div><span>Perpanjangan kontrak jika performa baik</span></div>
+      </div>
+      <div class="hak-box">
+        <div class="hak-label red">✗ Kewajiban Partner</div>
+        <div class="hak-item"><div class="hak-dot dot-red"></div><span>Jalankan tugas sesuai yang tertulis di kontrak</span></div>
+        <div class="hak-item"><div class="hak-dot dot-red"></div><span>Pastikan data nasabah valid sebelum direferral</span></div>
+        <div class="hak-item"><div class="hak-dot dot-red"></div><span>Lapor kondisi nasabah bermasalah ke Owner</span></div>
+        <div class="hak-item"><div class="hak-dot dot-red"></div><span>Jaga reputasi bisnis dalam promosi</span></div>
+        <div class="hak-item"><div class="hak-dot dot-red"></div><span>Tidak merangkap di bisnis sejenis yang bersaing</span></div>
+      </div>
+    </div>
+
+    <div class="rule-section">
+      <div class="rule-title">Ketentuan Komisi</div>
+      <div class="rule-grid">
+        <div class="rule-card ok">
+          <div class="rule-icon">⚡</div>
+          <div class="rule-name">Hitung Otomatis di Aplikasi</div>
+          <div class="rule-desc">Kalkulasi komisi berjalan otomatis berdasarkan transaksi nasabah referral yang berhasil cair</div>
+        </div>
+        <div class="rule-card warn">
+          <div class="rule-icon">📅</div>
+          <div class="rule-name">Jadwal Pembayaran</div>
+          <div class="rule-desc">Dibayarkan per transaksi selesai atau rekap bulanan — sesuai kesepakatan yang tertulis di kontrak</div>
+        </div>
+        <div class="rule-card danger">
+          <div class="rule-icon">❌</div>
+          <div class="rule-name">Tidak Ada Komisi Jika Nasabah Macet</div>
+          <div class="rule-desc">Komisi hanya dihitung dari transaksi nasabah yang berjalan lancar sesuai ketentuan kontrak</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  function showTab(id) {
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    const idx = { alur: 0, aturan: 1, hak: 2 };
+    document.querySelectorAll('.tab')[idx[id]].classList.add('active');
+  }
+</script>
+</body>
+</html>

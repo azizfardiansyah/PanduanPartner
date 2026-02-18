@@ -313,18 +313,151 @@
   <div class="topbar-live"><div class="live-dot"></div>LIVE</div>
 </div>
 
-<!-- MAIN NAV — 3 items -->
+<!-- MAIN NAV — urutan baru: Informasi Produk → SOP Partner → Ringkasan Kontrak -->
 <div class="main-nav">
-  <div class="mnav active" onclick="showPage('sop')">📋 SOP Partner</div>
-  <div class="mnav"        onclick="showPage('produk')">🛒 Informasi Produk</div>
+  <div class="mnav active" onclick="showPage('produk')">🛒 Informasi Produk</div>
+  <div class="mnav"        onclick="showPage('sop')">📋 SOP Partner</div>
   <div class="mnav"        onclick="showPage('kontrak')">📄 Ringkasan Kontrak</div>
 </div>
 
 
 <!-- ══════════════════════════════════════
-     PAGE 1 · SOP PARTNER
+     PAGE 1 · INFORMASI PRODUK
 ══════════════════════════════════════ -->
-<div class="page active" id="sop">
+<div class="page active" id="produk">
+  <div class="hero">
+    <div class="hero-icon">🛒</div>
+    <h1>Informasi Produk</h1>
+    <p class="hero-sub">Pembiayaan Syariah · Jual Beli · Dana Talang · Gadai</p>
+  </div>
+  <div class="tabs" id="produk-tabs">
+    <div class="tab t1 active" onclick="showSubTab('produk','murabahah',0)">🛒 Jual Beli</div>
+    <div class="tab t2"        onclick="showSubTab('produk','wakalah',1)">💵 Dana Talang</div>
+    <div class="tab t3"        onclick="showSubTab('produk','rahn',2)">💎 Gadai</div>
+  </div>
+  <div class="content">
+
+    <!-- MURABAHAH -->
+    <div class="tab-pane active" id="produk-murabahah">
+      <div class="prod-header ph-blue"><div class="prod-icon pi-blue">🛒</div><div>
+        <div class="prod-akad c-blue">Akad Murabahah</div>
+        <div class="prod-name">Jual Beli</div>
+        <div class="prod-desc">Pembiayaan barang dengan sistem jual beli syariah — owner beli barang atas permintaan nasabah, nasabah angsur sesuai harga yang disepakati di awal.</div>
+      </div></div>
+      <div class="section"><div class="section-title">Cara Kerja</div>
+        <div class="info-card"><div class="info-card-body item-list">
+          <div class="item"><div class="item-dot dot-blue"></div><span>Nasabah mengajukan barang yang ingin dibeli</span></div>
+          <div class="item"><div class="item-dot dot-blue"></div><span>Owner membeli barang tersebut atas nama sendiri</span></div>
+          <div class="item"><div class="item-dot dot-blue"></div><span>Owner menjual ke nasabah dengan harga pokok + margin yang disepakati di awal</span></div>
+          <div class="item"><div class="item-dot dot-blue"></div><span>Nasabah membayar secara angsuran bulanan sesuai tenor (1–24 bulan)</span></div>
+        </div>
+        <div class="formula"><span class="formula-part fp-blue">Harga Beli</span><span class="formula-op">+</span><span class="formula-part fp-purple">Margin</span><span class="formula-op">=</span><span class="formula-part fp-green">Harga Jual</span></div>
+        </div>
+      </div>
+      <div class="section"><div class="section-title">Ketentuan Pembayaran</div>
+        <div class="two-col">
+          <div class="info-card"><div class="info-card-title">📅 Cicilan</div><div class="info-card-body">Dibayar setiap bulan pada tanggal yang disepakati. Jumlah cicilan <strong>tetap</strong> selama tenor.</div></div>
+          <div class="info-card"><div class="info-card-title">📋 Transparansi</div><div class="info-card-body">Harga beli dan margin diketahui sejak awal. <strong>Tidak ada biaya tersembunyi.</strong></div></div>
+        </div>
+      </div>
+      <div class="section"><div class="section-title">Keterlambatan Pembayaran</div>
+        <div class="warn-card"><div class="warn-card-title">⚠️ Denda Keterlambatan</div><div class="warn-card-body">Terlambat lebih dari <strong>3 hari</strong> → denda <strong>Rp 2.500/hari</strong>.</div></div>
+        <div class="ok-card"><div class="ok-card-title">✓ Dana Denda untuk Sosial</div><div class="ok-card-body">Denda <strong>tidak menjadi hak owner</strong> — disalurkan sebagai dana sosial kepada fakir miskin.</div></div>
+      </div>
+      <div class="section"><div class="section-title">Ketentuan Penting</div>
+        <div class="info-card"><div class="info-card-title">📦 Barang & Garansi</div><div class="info-card-body item-list">
+          <div class="item"><div class="item-dot dot-blue"></div><span>Risiko barang setelah diterima menjadi tanggung jawab nasabah</span></div>
+          <div class="item"><div class="item-dot dot-blue"></div><span>Garansi mengikuti garansi resmi pabrik/distributor</span></div>
+        </div></div>
+        <div class="info-card"><div class="info-card-title">⚖️ Jika Nasabah Meninggal</div><div class="info-card-body">Barang dijual via musyawarah ahli waris → lunasi sisa hutang → kelebihan ke ahli waris.</div></div>
+        <div class="info-card"><div class="info-card-title">🏛 Penyelesaian Sengketa</div><div class="info-card-body">Musyawarah → <strong>Basyarnas</strong> (final & mengikat)</div></div>
+      </div>
+      <div class="cta"><div class="cta-text">Tertarik dengan produk Jual Beli?</div><div class="cta-sub">Ajukan sekarang melalui aplikasi KRESA</div><a href="https://kresa.online/" target="_blank" class="cta-btn">Ajukan Sekarang →</a></div>
+    </div>
+
+    <!-- WAKALAH -->
+    <div class="tab-pane" id="produk-wakalah">
+      <div class="prod-header ph-teal"><div class="prod-icon pi-teal">💵</div><div>
+        <div class="prod-akad c-teal">Akad Wakalah bil Ujrah</div>
+        <div class="prod-name">Dana Talang</div>
+        <div class="prod-desc">Owner bertindak sebagai wakil untuk membayar kebutuhan nasabah, nasabah mengembalikan dana talangan beserta ujrah (upah jasa) yang disepakati.</div>
+      </div></div>
+      <div class="section"><div class="section-title">Cara Kerja</div>
+        <div class="info-card"><div class="info-card-body item-list">
+          <div class="item"><div class="item-dot dot-teal"></div><span>Nasabah memberikan kuasa kepada owner untuk membayar kebutuhannya</span></div>
+          <div class="item"><div class="item-dot dot-teal"></div><span>Owner membayar dan mengurus proses sampai selesai</span></div>
+          <div class="item"><div class="item-dot dot-teal"></div><span>Nasabah mengembalikan dana talangan + ujrah secara cicilan</span></div>
+        </div>
+        <div class="formula"><span class="formula-part fp-teal">Dana Talangan</span><span class="formula-op">+</span><span class="formula-part fp-purple">Ujrah</span><span class="formula-op">=</span><span class="formula-part fp-green">Total Kewajiban</span></div>
+        </div>
+      </div>
+      <div class="section"><div class="section-title">Yang Perlu Dipahami</div>
+        <div class="two-col">
+          <div class="ok-card"><div class="ok-card-title">✓ Dana Talangan</div><div class="ok-card-body">Bukan pinjaman berbunga. Nasabah hanya kembalikan <strong>nominal yang sama</strong>.</div></div>
+          <div class="ok-card"><div class="ok-card-title">✓ Ujrah (Upah Jasa)</div><div class="ok-card-body"><strong>Berdiri sendiri</strong> — kompensasi jasa pengurusan, bukan bunga.</div></div>
+        </div>
+      </div>
+      <div class="section"><div class="section-title">Keterlambatan Pembayaran</div>
+        <div class="warn-card"><div class="warn-card-title">⚠️ Denda Keterlambatan</div><div class="warn-card-body">Terlambat lebih dari <strong>3 hari</strong> → denda <strong>Rp 2.500/hari</strong>.</div></div>
+        <div class="ok-card"><div class="ok-card-title">✓ Dana Denda untuk Sosial</div><div class="ok-card-body">Denda tidak menjadi hak owner — disalurkan sebagai dana sosial.</div></div>
+      </div>
+      <div class="section"><div class="section-title">Ketentuan Penting</div>
+        <div class="info-card"><div class="info-card-title">⚖️ Jika Nasabah Meninggal</div><div class="info-card-body">Kewajiban pelunasan beralih kepada ahli waris yang sah.</div></div>
+        <div class="info-card"><div class="info-card-title">🏛 Penyelesaian Sengketa</div><div class="info-card-body">Musyawarah → <strong>Basyarnas</strong> (final & mengikat)</div></div>
+      </div>
+      <div class="cta"><div class="cta-text">Butuh Dana Talangan?</div><div class="cta-sub">Ajukan sekarang melalui aplikasi KRESA</div><a href="https://kresa.online/" target="_blank" class="cta-btn">Ajukan Sekarang →</a></div>
+    </div>
+
+    <!-- RAHN -->
+    <div class="tab-pane" id="produk-rahn">
+      <div class="prod-header ph-yellow"><div class="prod-icon pi-yellow">💎</div><div>
+        <div class="prod-akad c-yellow">Akad Qardh + Rahn + Ujrah</div>
+        <div class="prod-name">Gadai Syariah</div>
+        <div class="prod-desc">Nasabah mendapatkan pinjaman dengan menyerahkan barang jaminan. Pinjaman tanpa bunga, biaya yang ada adalah ujrah penjagaan barang — bukan riba.</div>
+      </div></div>
+      <div class="section"><div class="section-title">3 Akad dalam Satu Produk</div>
+        <div class="info-card"><div class="info-card-body item-list">
+          <div class="item"><div class="item-dot dot-yellow"></div><span><strong>Qardh</strong> — Pinjaman tanpa bunga, hanya kembalikan nominal yang dipinjam</span></div>
+          <div class="item"><div class="item-dot dot-yellow"></div><span><strong>Rahn</strong> — Barang jaminan diserahkan ke owner selama masa gadai</span></div>
+          <div class="item"><div class="item-dot dot-yellow"></div><span><strong>Ujrah</strong> — Biaya penjagaan barang jaminan, berdiri sendiri, bukan bunga</span></div>
+        </div>
+        <div class="formula"><span class="formula-part fp-yellow">Pinjaman Pokok</span><span class="formula-op">+</span><span class="formula-part fp-purple">Biaya Penjagaan</span><span class="formula-op">=</span><span class="formula-part fp-green">Total Kewajiban</span></div>
+        </div>
+      </div>
+      <div class="section"><div class="section-title">Ketentuan Barang Jaminan</div>
+        <div class="two-col">
+          <div class="info-card"><div class="info-card-title">✓ Hak Nasabah</div><div class="info-card-body item-list">
+            <div class="item"><div class="item-dot dot-green"></div><span>Barang tetap milik nasabah</span></div>
+            <div class="item"><div class="item-dot dot-green"></div><span>Owner wajib jaga barang; kembali maks. 3 hari kerja setelah lunas</span></div>
+          </div></div>
+          <div class="info-card"><div class="info-card-title">⚠️ Ketentuan</div><div class="info-card-body item-list">
+            <div class="item"><div class="item-dot dot-yellow"></div><span>Nasabah tidak bisa pakai barang selama gadai</span></div>
+            <div class="item"><div class="item-dot dot-yellow"></div><span>Owner tidak boleh manfaatkan tanpa izin</span></div>
+          </div></div>
+        </div>
+      </div>
+      <div class="section"><div class="section-title">Keterlambatan & Wanprestasi</div>
+        <div class="warn-card"><div class="warn-card-title">⚠️ Denda Keterlambatan</div><div class="warn-card-body">Terlambat lebih dari <strong>3 hari</strong> → denda <strong>Rp 2.500/hari</strong>. Biaya penjagaan tertunggak dapat dipotong dari nilai barang jaminan.</div></div>
+        <div class="info-card"><div class="info-card-body item-list">
+          <div class="item"><div class="item-dot dot-red"></div><span>Peringatan tertulis 3 kali dalam 30 hari → jika tetap tidak lunas, barang dijual</span></div>
+          <div class="item"><div class="item-dot dot-green"></div><span><strong>Sisa hasil penjualan dikembalikan kepada nasabah</strong></span></div>
+        </div></div>
+      </div>
+      <div class="section"><div class="section-title">Ketentuan Penting</div>
+        <div class="info-card"><div class="info-card-title">⚖️ Jika Nasabah Meninggal</div><div class="info-card-body">Ahli waris boleh lunasi atau setujui penjualan barang — kelebihan hasil ke ahli waris.</div></div>
+        <div class="info-card"><div class="info-card-title">🏛 Penyelesaian Sengketa</div><div class="info-card-body">Musyawarah → <strong>Basyarnas</strong> (final & mengikat)</div></div>
+      </div>
+      <div class="cta"><div class="cta-text">Mau Gadaikan Barang?</div><div class="cta-sub">Ajukan sekarang melalui aplikasi KRESA</div><a href="https://kresa.online/" target="_blank" class="cta-btn">Ajukan Sekarang →</a></div>
+    </div>
+
+  </div>
+</div><!-- /page produk -->
+
+
+<!-- ══════════════════════════════════════
+     PAGE 2 · SOP PARTNER
+══════════════════════════════════════ -->
+<div class="page" id="sop">
   <div class="hero">
     <div class="hero-icon">🤝</div>
     <h1>SOP Partner</h1>
@@ -497,139 +630,6 @@
 
 
 <!-- ══════════════════════════════════════
-     PAGE 2 · INFORMASI PRODUK
-══════════════════════════════════════ -->
-<div class="page" id="produk">
-  <div class="hero">
-    <div class="hero-icon">🛒</div>
-    <h1>Informasi Produk</h1>
-    <p class="hero-sub">Pembiayaan Syariah · Jual Beli · Dana Talang · Gadai</p>
-  </div>
-  <div class="tabs" id="produk-tabs">
-    <div class="tab t1 active" onclick="showSubTab('produk','murabahah',0)">🛒 Jual Beli</div>
-    <div class="tab t2"        onclick="showSubTab('produk','wakalah',1)">💵 Dana Talang</div>
-    <div class="tab t3"        onclick="showSubTab('produk','rahn',2)">💎 Gadai</div>
-  </div>
-  <div class="content">
-
-    <!-- MURABAHAH -->
-    <div class="tab-pane active" id="produk-murabahah">
-      <div class="prod-header ph-blue"><div class="prod-icon pi-blue">🛒</div><div>
-        <div class="prod-akad c-blue">Akad Murabahah</div>
-        <div class="prod-name">Jual Beli</div>
-        <div class="prod-desc">Pembiayaan barang dengan sistem jual beli syariah — owner beli barang atas permintaan nasabah, nasabah angsur sesuai harga yang disepakati di awal.</div>
-      </div></div>
-      <div class="section"><div class="section-title">Cara Kerja</div>
-        <div class="info-card"><div class="info-card-body item-list">
-          <div class="item"><div class="item-dot dot-blue"></div><span>Nasabah mengajukan barang yang ingin dibeli</span></div>
-          <div class="item"><div class="item-dot dot-blue"></div><span>Owner membeli barang tersebut atas nama sendiri</span></div>
-          <div class="item"><div class="item-dot dot-blue"></div><span>Owner menjual ke nasabah dengan harga pokok + margin yang disepakati di awal</span></div>
-          <div class="item"><div class="item-dot dot-blue"></div><span>Nasabah membayar secara angsuran bulanan sesuai tenor (1–24 bulan)</span></div>
-        </div>
-        <div class="formula"><span class="formula-part fp-blue">Harga Beli</span><span class="formula-op">+</span><span class="formula-part fp-purple">Margin</span><span class="formula-op">=</span><span class="formula-part fp-green">Harga Jual</span></div>
-        </div>
-      </div>
-      <div class="section"><div class="section-title">Ketentuan Pembayaran</div>
-        <div class="two-col">
-          <div class="info-card"><div class="info-card-title">📅 Cicilan</div><div class="info-card-body">Dibayar setiap bulan pada tanggal yang disepakati. Jumlah cicilan <strong>tetap</strong> selama tenor.</div></div>
-          <div class="info-card"><div class="info-card-title">📋 Transparansi</div><div class="info-card-body">Harga beli dan margin diketahui sejak awal. <strong>Tidak ada biaya tersembunyi.</strong></div></div>
-        </div>
-      </div>
-      <div class="section"><div class="section-title">Keterlambatan Pembayaran</div>
-        <div class="warn-card"><div class="warn-card-title">⚠️ Denda Keterlambatan</div><div class="warn-card-body">Terlambat lebih dari <strong>3 hari</strong> → denda <strong>Rp 2.500/hari</strong>.</div></div>
-        <div class="ok-card"><div class="ok-card-title">✓ Dana Denda untuk Sosial</div><div class="ok-card-body">Denda <strong>tidak menjadi hak owner</strong> — disalurkan sebagai dana sosial kepada fakir miskin.</div></div>
-      </div>
-      <div class="section"><div class="section-title">Ketentuan Penting</div>
-        <div class="info-card"><div class="info-card-title">📦 Barang & Garansi</div><div class="info-card-body item-list">
-          <div class="item"><div class="item-dot dot-blue"></div><span>Risiko barang setelah diterima menjadi tanggung jawab nasabah</span></div>
-          <div class="item"><div class="item-dot dot-blue"></div><span>Garansi mengikuti garansi resmi pabrik/distributor</span></div>
-        </div></div>
-        <div class="info-card"><div class="info-card-title">⚖️ Jika Nasabah Meninggal</div><div class="info-card-body">Barang dijual via musyawarah ahli waris → lunasi sisa hutang → kelebihan ke ahli waris.</div></div>
-        <div class="info-card"><div class="info-card-title">🏛 Penyelesaian Sengketa</div><div class="info-card-body">Musyawarah → <strong>Basyarnas</strong> (final & mengikat)</div></div>
-      </div>
-      <div class="cta"><div class="cta-text">Tertarik dengan produk Jual Beli?</div><div class="cta-sub">Ajukan sekarang melalui aplikasi KRESA</div><a href="https://kresa.online/" target="_blank" class="cta-btn">Ajukan Sekarang →</a></div>
-    </div>
-
-    <!-- WAKALAH -->
-    <div class="tab-pane" id="produk-wakalah">
-      <div class="prod-header ph-teal"><div class="prod-icon pi-teal">💵</div><div>
-        <div class="prod-akad c-teal">Akad Wakalah bil Ujrah</div>
-        <div class="prod-name">Dana Talang</div>
-        <div class="prod-desc">Owner bertindak sebagai wakil untuk membayar kebutuhan nasabah, nasabah mengembalikan dana talangan beserta ujrah (upah jasa) yang disepakati.</div>
-      </div></div>
-      <div class="section"><div class="section-title">Cara Kerja</div>
-        <div class="info-card"><div class="info-card-body item-list">
-          <div class="item"><div class="item-dot dot-teal"></div><span>Nasabah memberikan kuasa kepada owner untuk membayar kebutuhannya</span></div>
-          <div class="item"><div class="item-dot dot-teal"></div><span>Owner membayar dan mengurus proses sampai selesai</span></div>
-          <div class="item"><div class="item-dot dot-teal"></div><span>Nasabah mengembalikan dana talangan + ujrah secara cicilan</span></div>
-        </div>
-        <div class="formula"><span class="formula-part fp-teal">Dana Talangan</span><span class="formula-op">+</span><span class="formula-part fp-purple">Ujrah</span><span class="formula-op">=</span><span class="formula-part fp-green">Total Kewajiban</span></div>
-        </div>
-      </div>
-      <div class="section"><div class="section-title">Yang Perlu Dipahami</div>
-        <div class="two-col">
-          <div class="ok-card"><div class="ok-card-title">✓ Dana Talangan</div><div class="ok-card-body">Bukan pinjaman berbunga. Nasabah hanya kembalikan <strong>nominal yang sama</strong>.</div></div>
-          <div class="ok-card"><div class="ok-card-title">✓ Ujrah (Upah Jasa)</div><div class="ok-card-body"><strong>Berdiri sendiri</strong> — kompensasi jasa pengurusan, bukan bunga.</div></div>
-        </div>
-      </div>
-      <div class="section"><div class="section-title">Keterlambatan Pembayaran</div>
-        <div class="warn-card"><div class="warn-card-title">⚠️ Denda Keterlambatan</div><div class="warn-card-body">Terlambat lebih dari <strong>3 hari</strong> → denda <strong>Rp 2.500/hari</strong>.</div></div>
-        <div class="ok-card"><div class="ok-card-title">✓ Dana Denda untuk Sosial</div><div class="ok-card-body">Denda tidak menjadi hak owner — disalurkan sebagai dana sosial.</div></div>
-      </div>
-      <div class="section"><div class="section-title">Ketentuan Penting</div>
-        <div class="info-card"><div class="info-card-title">⚖️ Jika Nasabah Meninggal</div><div class="info-card-body">Kewajiban pelunasan beralih kepada ahli waris yang sah.</div></div>
-        <div class="info-card"><div class="info-card-title">🏛 Penyelesaian Sengketa</div><div class="info-card-body">Musyawarah → <strong>Basyarnas</strong> (final & mengikat)</div></div>
-      </div>
-      <div class="cta"><div class="cta-text">Butuh Dana Talangan?</div><div class="cta-sub">Ajukan sekarang melalui aplikasi KRESA</div><a href="https://kresa.online/" target="_blank" class="cta-btn">Ajukan Sekarang →</a></div>
-    </div>
-
-    <!-- RAHN -->
-    <div class="tab-pane" id="produk-rahn">
-      <div class="prod-header ph-yellow"><div class="prod-icon pi-yellow">💎</div><div>
-        <div class="prod-akad c-yellow">Akad Qardh + Rahn + Ujrah</div>
-        <div class="prod-name">Gadai Syariah</div>
-        <div class="prod-desc">Nasabah mendapatkan pinjaman dengan menyerahkan barang jaminan. Pinjaman tanpa bunga, biaya yang ada adalah ujrah penjagaan barang — bukan riba.</div>
-      </div></div>
-      <div class="section"><div class="section-title">3 Akad dalam Satu Produk</div>
-        <div class="info-card"><div class="info-card-body item-list">
-          <div class="item"><div class="item-dot dot-yellow"></div><span><strong>Qardh</strong> — Pinjaman tanpa bunga, hanya kembalikan nominal yang dipinjam</span></div>
-          <div class="item"><div class="item-dot dot-yellow"></div><span><strong>Rahn</strong> — Barang jaminan diserahkan ke owner selama masa gadai</span></div>
-          <div class="item"><div class="item-dot dot-yellow"></div><span><strong>Ujrah</strong> — Biaya penjagaan barang jaminan, berdiri sendiri, bukan bunga</span></div>
-        </div>
-        <div class="formula"><span class="formula-part fp-yellow">Pinjaman Pokok</span><span class="formula-op">+</span><span class="formula-part fp-purple">Biaya Penjagaan</span><span class="formula-op">=</span><span class="formula-part fp-green">Total Kewajiban</span></div>
-        </div>
-      </div>
-      <div class="section"><div class="section-title">Ketentuan Barang Jaminan</div>
-        <div class="two-col">
-          <div class="info-card"><div class="info-card-title">✓ Hak Nasabah</div><div class="info-card-body item-list">
-            <div class="item"><div class="item-dot dot-green"></div><span>Barang tetap milik nasabah</span></div>
-            <div class="item"><div class="item-dot dot-green"></div><span>Owner wajib jaga barang; kembali maks. 3 hari kerja setelah lunas</span></div>
-          </div></div>
-          <div class="info-card"><div class="info-card-title">⚠️ Ketentuan</div><div class="info-card-body item-list">
-            <div class="item"><div class="item-dot dot-yellow"></div><span>Nasabah tidak bisa pakai barang selama gadai</span></div>
-            <div class="item"><div class="item-dot dot-yellow"></div><span>Owner tidak boleh manfaatkan tanpa izin</span></div>
-          </div></div>
-        </div>
-      </div>
-      <div class="section"><div class="section-title">Keterlambatan & Wanprestasi</div>
-        <div class="warn-card"><div class="warn-card-title">⚠️ Denda Keterlambatan</div><div class="warn-card-body">Terlambat lebih dari <strong>3 hari</strong> → denda <strong>Rp 2.500/hari</strong>. Biaya penjagaan tertunggak dapat dipotong dari nilai barang jaminan.</div></div>
-        <div class="info-card"><div class="info-card-body item-list">
-          <div class="item"><div class="item-dot dot-red"></div><span>Peringatan tertulis 3 kali dalam 30 hari → jika tetap tidak lunas, barang dijual</span></div>
-          <div class="item"><div class="item-dot dot-green"></div><span><strong>Sisa hasil penjualan dikembalikan kepada nasabah</strong></span></div>
-        </div></div>
-      </div>
-      <div class="section"><div class="section-title">Ketentuan Penting</div>
-        <div class="info-card"><div class="info-card-title">⚖️ Jika Nasabah Meninggal</div><div class="info-card-body">Ahli waris boleh lunasi atau setujui penjualan barang — kelebihan hasil ke ahli waris.</div></div>
-        <div class="info-card"><div class="info-card-title">🏛 Penyelesaian Sengketa</div><div class="info-card-body">Musyawarah → <strong>Basyarnas</strong> (final & mengikat)</div></div>
-      </div>
-      <div class="cta"><div class="cta-text">Mau Gadaikan Barang?</div><div class="cta-sub">Ajukan sekarang melalui aplikasi KRESA</div><a href="https://kresa.online/" target="_blank" class="cta-btn">Ajukan Sekarang →</a></div>
-    </div>
-
-  </div>
-</div><!-- /page produk -->
-
-
-<!-- ══════════════════════════════════════
      PAGE 3 · RINGKASAN KONTRAK
 ══════════════════════════════════════ -->
 <div class="page" id="kontrak">
@@ -640,7 +640,6 @@
   </div>
   <div class="content">
 
-    <!-- Disclaimer banner -->
     <div class="kontrak-banner">
       <div class="kb-icon">ℹ️</div>
       <div>
@@ -650,7 +649,6 @@
       </div>
     </div>
 
-    <!-- Ringkasan cepat -->
     <div class="section">
       <div class="section-title">Ringkasan Perjanjian</div>
       <div class="kontrak-summary">
@@ -669,7 +667,6 @@
       </div>
     </div>
 
-    <!-- Accordion pasal -->
     <div class="section">
       <div class="section-title">Isi Perjanjian — Pasal per Pasal</div>
 
@@ -837,7 +834,7 @@
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.mnav').forEach(n => n.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    const idx = { sop: 0, produk: 1, kontrak: 2 };
+    const idx = { produk: 0, sop: 1, kontrak: 2 };
     document.querySelectorAll('.mnav')[idx[id]].classList.add('active');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }

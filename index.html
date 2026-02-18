@@ -34,395 +34,278 @@
     min-height: 100vh;
   }
 
-  /* ── Topbar ── */
   .topbar {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    position: sticky;
-    top: 0;
-    z-index: 200;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 12px 24px; display: flex; align-items: center; gap: 10px;
+    position: sticky; top: 0; z-index: 200;
   }
   .topbar-title { font-weight: 700; font-size: 15px; }
   .topbar-badge {
-    background: rgba(124,111,247,0.15);
-    border: 1px solid rgba(124,111,247,0.3);
-    color: var(--purple-light);
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 1px; padding: 3px 10px;
-    border-radius: 100px; text-transform: uppercase;
+    background: rgba(124,111,247,0.15); border: 1px solid rgba(124,111,247,0.3);
+    color: var(--purple-light); font-size: 10px; font-weight: 700;
+    letter-spacing: 1px; padding: 3px 10px; border-radius: 100px; text-transform: uppercase;
   }
   .topbar-live {
-    margin-left: auto;
-    display: flex; align-items: center; gap: 6px;
+    margin-left: auto; display: flex; align-items: center; gap: 6px;
     font-size: 11px; color: var(--green); font-weight: 600;
   }
-  .live-dot {
-    width: 7px; height: 7px;
-    background: var(--green); border-radius: 50%;
-    animation: pulse 2s infinite;
-  }
+  .live-dot { width:7px; height:7px; background:var(--green); border-radius:50%; animation:pulse 2s infinite; }
   @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-  /* ── Main nav (SOP / Produk) ── */
   .main-nav {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-    padding: 10px 16px;
-    position: sticky;
-    top: 49px;
-    z-index: 190;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    display: flex; justify-content: center; gap: 4px; padding: 10px 12px;
+    position: sticky; top: 49px; z-index: 190; flex-wrap: wrap;
   }
   .mnav {
-    padding: 9px 22px;
-    border-radius: 100px;
-    font-size: 13px; font-weight: 600;
-    cursor: pointer;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--muted);
-    transition: all 0.2s;
+    padding: 8px 14px; border-radius: 100px; font-size: 12px; font-weight: 600;
+    cursor: pointer; border: 1px solid var(--border); background: transparent;
+    color: var(--muted); transition: all 0.2s; white-space: nowrap;
   }
   .mnav:hover { color: var(--text); border-color: var(--dim); }
-  .mnav.active {
-    background: rgba(124,111,247,0.15);
-    border-color: var(--purple);
-    color: var(--purple-light);
-  }
+  .mnav.active { background: rgba(124,111,247,0.15); border-color: var(--purple); color: var(--purple-light); }
 
-  /* ── Page sections ── */
   .page { display: none; }
   .page.active { display: block; }
 
-  /* ── Hero ── */
   .hero { text-align: center; padding: 36px 24px 28px; }
   .hero-icon {
-    width: 60px; height: 60px;
-    background: rgba(124,111,247,0.12);
-    border: 1px solid rgba(124,111,247,0.25);
-    border-radius: 16px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 26px; margin: 0 auto 14px;
-  }
-  .hero h1 {
-    font-size: clamp(20px, 4vw, 30px);
-    font-weight: 800; letter-spacing: -0.5px; margin-bottom: 8px;
-  }
-  .hero-sub { color: var(--muted); font-size: 13px; }
-
-  /* ── Sub tabs ── */
-  .tabs {
-    display: flex; justify-content: center;
-    gap: 8px; padding: 0 24px 28px; flex-wrap: wrap;
-  }
-  .tab {
-    padding: 9px 18px; border-radius: 100px;
-    font-size: 13px; font-weight: 600; cursor: pointer;
-    border: 1px solid var(--border);
-    background: var(--surface); color: var(--muted);
-    transition: all 0.2s;
-  }
-  .tab:hover { color: var(--text); border-color: var(--dim); }
-  .tab.active {
-    background: rgba(124,111,247,0.15);
-    border-color: var(--purple); color: var(--purple-light);
-  }
-  .tab.t1.active { background: rgba(96,165,250,0.12);  border-color: var(--blue);   color: var(--blue); }
-  .tab.t2.active { background: rgba(45,212,191,0.12);  border-color: var(--teal);   color: var(--teal); }
-  .tab.t3.active { background: rgba(251,191,36,0.12);  border-color: var(--yellow); color: var(--yellow); }
-
-  /* ── Content wrap ── */
-  .content { max-width: 620px; margin: 0 auto; padding: 0 20px 80px; }
-
-  .tab-pane { display: none; }
-  .tab-pane.active { display: block; animation: fadeUp 0.35s ease both; }
-
-  @keyframes fadeUp {
-    from { opacity:0; transform:translateY(10px); }
-    to   { opacity:1; transform:translateY(0); }
-  }
-
-  /* ── Arrow ── */
-  .arrow { display: flex; flex-direction: column; align-items: center; }
-  .arrow-line { width: 2px; height: 26px; background: var(--border); }
-  .arrow-head {
-    width:0; height:0;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-top: 9px solid var(--border);
-  }
-
-  /* ── Cap (START/END) ── */
-  .node-cap { display: flex; justify-content: center; }
-  .cap-pill {
-    background: rgba(124,111,247,0.15);
-    border: 2px solid var(--purple);
-    color: var(--purple-light);
-    font-weight: 700; font-size: 13px;
-    letter-spacing: 2px; padding: 10px 32px; border-radius: 100px;
-  }
-  .cap-pill.end {
-    background: rgba(34,197,94,0.1);
-    border-color: var(--green); color: var(--green);
-  }
-
-  /* ── Step card ── */
-  .step-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px; padding: 18px 20px;
-    transition: border-color 0.2s, transform 0.15s;
-    animation: fadeUp 0.4s ease both;
-  }
-  .step-card:hover { border-color: var(--purple); transform: translateY(-2px); }
-
-  .step-top { display: flex; align-items: flex-start; gap: 14px; }
-  .step-icon {
-    width: 40px; height: 40px; border-radius: 11px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 18px; flex-shrink: 0;
-  }
-  .step-num {
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 2px; text-transform: uppercase;
-    color: var(--muted); margin-bottom: 3px;
-  }
-  .step-title { font-size: 15px; font-weight: 700; margin-bottom: 5px; }
-  .step-desc  { font-size: 12px; color: var(--muted); line-height: 1.6; }
-  .step-desc strong { color: var(--text); }
-  .step-tags  { display: flex; gap: 6px; margin-top: 10px; flex-wrap: wrap; }
-
-  /* ── Branch box ── */
-  .branch-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 14px; overflow: hidden;
-    animation: fadeUp 0.4s ease both;
-    transition: border-color 0.2s;
-  }
-  .branch-box:hover { border-color: var(--purple); }
-  .branch-header {
-    padding: 16px 20px;
-    display: flex; align-items: center; gap: 12px;
-    border-bottom: 1px solid var(--border);
-  }
-  .branch-title { font-weight: 700; font-size: 15px; }
-  .branch-sub   { font-size: 12px; color: var(--muted); margin-top: 2px; }
-  .branch-paths { display: grid; grid-template-columns: 1fr 1fr; }
-  .branch-path  { padding: 16px; }
-  .branch-path:first-child { border-right: 1px solid var(--border); }
-  .branch-path-label {
-    font-size: 10px; font-weight: 700;
-    letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px;
-  }
-  .label-approve { color: var(--green); }
-  .label-warn    { color: var(--yellow); }
-  .label-reject  { color: var(--red); }
-  .branch-item {
-    font-size: 12px; color: var(--muted);
-    display: flex; align-items: flex-start;
-    gap: 7px; margin-bottom: 6px;
-  }
-  .branch-item::before {
-    content:''; width:5px; height:5px;
-    border-radius:50%; margin-top:5px; flex-shrink:0;
-  }
-  .path-approve .branch-item::before { background: var(--green); }
-  .path-warn    .branch-item::before { background: var(--yellow); }
-  .path-reject  .branch-item::before { background: var(--red); }
-
-  /* ── Final card ── */
-  .final-card {
-    background: linear-gradient(135deg, rgba(124,111,247,0.12), rgba(45,212,191,0.08));
-    border: 1px solid rgba(124,111,247,0.3);
-    border-radius: 14px; padding: 20px; text-align: center;
-    animation: fadeUp 0.4s ease both;
-  }
-  .final-icon  { font-size: 28px; margin-bottom: 10px; }
-  .final-title { font-weight: 700; font-size: 15px; margin-bottom: 6px; }
-  .final-desc  { font-size: 12px; color: var(--muted); }
-  .final-badges {
-    display: flex; justify-content: center;
-    gap: 8px; margin-top: 12px; flex-wrap: wrap;
-  }
-
-  /* ── Tags ── */
-  .tag {
-    display: inline-block; font-size: 11px; font-weight: 600;
-    padding: 3px 10px; border-radius: 100px;
-  }
-  .tag-green  { background: rgba(34,197,94,0.1);    color: var(--green); }
-  .tag-purple { background: rgba(124,111,247,0.1);  color: var(--purple-light); }
-  .tag-teal   { background: rgba(45,212,191,0.1);   color: var(--teal); }
-  .tag-yellow { background: rgba(251,191,36,0.1);   color: var(--yellow); }
-  .tag-red    { background: rgba(248,113,113,0.1);  color: var(--red); }
-  .tag-orange { background: rgba(251,146,60,0.1);   color: var(--orange); }
-  .tag-blue   { background: rgba(96,165,250,0.1);   color: var(--blue); }
-
-  /* ── Icon bg ── */
-  .bg-purple { background: rgba(124,111,247,0.12); }
-  .bg-teal   { background: rgba(45,212,191,0.12); }
-  .bg-green  { background: rgba(34,197,94,0.12); }
-  .bg-yellow { background: rgba(251,191,36,0.12); }
-  .bg-red    { background: rgba(248,113,113,0.12); }
-  .bg-blue   { background: rgba(96,165,250,0.12); }
-  .bg-orange { background: rgba(251,146,60,0.12); }
-  .bg-pink   { background: rgba(244,114,182,0.12); }
-
-  /* ── Rule cards ── */
-  .rule-section { margin-bottom: 28px; }
-  .rule-title {
-    font-size: 16px; font-weight: 700;
-    margin-bottom: 14px; padding-bottom: 10px;
-    border-bottom: 1px solid var(--border);
-  }
-  .rule-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap: 12px; }
-  .rule-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px; padding: 18px;
-    transition: border-color 0.2s;
-  }
-  .rule-card.danger { border-left: 3px solid var(--red); }
-  .rule-card.warn   { border-left: 3px solid var(--yellow); }
-  .rule-card.ok     { border-left: 3px solid var(--green); }
-  .rule-icon { font-size: 20px; margin-bottom: 10px; }
-  .rule-name { font-weight: 600; font-size: 13px; margin-bottom: 6px; }
-  .rule-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
-
-  /* ── Hak & Kewajiban ── */
-  .hak-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
-  .hak-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
-  .hak-label {
-    font-size: 10px; font-weight: 700; letter-spacing: 2px;
-    text-transform: uppercase; margin-bottom: 12px;
-    padding-bottom: 8px; border-bottom: 1px solid var(--border);
-  }
-  .hak-label.green { color: var(--green); }
-  .hak-label.red   { color: var(--red); }
-  .hak-item {
-    display: flex; gap: 8px; font-size: 12px; color: var(--muted);
-    margin-bottom: 8px; align-items: flex-start; line-height: 1.5;
-  }
-  .hak-dot { width:5px; height:5px; border-radius:50%; margin-top:5px; flex-shrink:0; }
-  .dot-green { background: var(--green); }
-  .dot-red   { background: var(--red); }
-
-  /* ── Produk styles ── */
-  .prod-header {
-    border-radius: 16px; padding: 24px; margin-bottom: 20px;
-    display: flex; align-items: flex-start; gap: 16px;
-  }
-  .ph-blue   { background: rgba(96,165,250,0.08);  border: 1px solid rgba(96,165,250,0.2); }
-  .ph-teal   { background: rgba(45,212,191,0.08);  border: 1px solid rgba(45,212,191,0.2); }
-  .ph-yellow { background: rgba(251,191,36,0.08);  border: 1px solid rgba(251,191,36,0.2); }
-  .prod-icon {
-    width:52px; height:52px; border-radius:14px;
+    width:60px; height:60px; background:rgba(124,111,247,0.12);
+    border:1px solid rgba(124,111,247,0.25); border-radius:16px;
     display:flex; align-items:center; justify-content:center;
-    font-size:24px; flex-shrink:0;
+    font-size:26px; margin:0 auto 14px;
   }
-  .pi-blue   { background: rgba(96,165,250,0.15); }
-  .pi-teal   { background: rgba(45,212,191,0.15); }
-  .pi-yellow { background: rgba(251,191,36,0.15); }
+  .hero h1 { font-size:clamp(20px,4vw,30px); font-weight:800; letter-spacing:-0.5px; margin-bottom:8px; }
+  .hero-sub { color:var(--muted); font-size:13px; }
+
+  .tabs { display:flex; justify-content:center; gap:8px; padding:0 24px 28px; flex-wrap:wrap; }
+  .tab {
+    padding:9px 18px; border-radius:100px; font-size:13px; font-weight:600; cursor:pointer;
+    border:1px solid var(--border); background:var(--surface); color:var(--muted); transition:all 0.2s;
+  }
+  .tab:hover { color:var(--text); border-color:var(--dim); }
+  .tab.active { background:rgba(124,111,247,0.15); border-color:var(--purple); color:var(--purple-light); }
+  .tab.t1.active { background:rgba(96,165,250,0.12);  border-color:var(--blue);   color:var(--blue); }
+  .tab.t2.active { background:rgba(45,212,191,0.12);  border-color:var(--teal);   color:var(--teal); }
+  .tab.t3.active { background:rgba(251,191,36,0.12);  border-color:var(--yellow); color:var(--yellow); }
+
+  .content { max-width: 680px; margin: 0 auto; padding: 0 20px 80px; }
+
+  .tab-pane { display:none; }
+  .tab-pane.active { display:block; animation:fadeUp 0.35s ease both; }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+
+  .arrow { display:flex; flex-direction:column; align-items:center; }
+  .arrow-line { width:2px; height:26px; background:var(--border); }
+  .arrow-head { width:0; height:0; border-left:7px solid transparent; border-right:7px solid transparent; border-top:9px solid var(--border); }
+
+  .node-cap { display:flex; justify-content:center; }
+  .cap-pill {
+    background:rgba(124,111,247,0.15); border:2px solid var(--purple); color:var(--purple-light);
+    font-weight:700; font-size:13px; letter-spacing:2px; padding:10px 32px; border-radius:100px;
+  }
+  .cap-pill.end { background:rgba(34,197,94,0.1); border-color:var(--green); color:var(--green); }
+
+  .step-card {
+    background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:18px 20px;
+    transition:border-color 0.2s,transform 0.15s; animation:fadeUp 0.4s ease both;
+  }
+  .step-card:hover { border-color:var(--purple); transform:translateY(-2px); }
+  .step-top  { display:flex; align-items:flex-start; gap:14px; }
+  .step-icon { width:40px; height:40px; border-radius:11px; display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
+  .step-num  { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:3px; }
+  .step-title{ font-size:15px; font-weight:700; margin-bottom:5px; }
+  .step-desc { font-size:12px; color:var(--muted); line-height:1.6; }
+  .step-desc strong { color:var(--text); }
+  .step-tags { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
+
+  .branch-box { background:var(--surface); border:1px solid var(--border); border-radius:14px; overflow:hidden; animation:fadeUp 0.4s ease both; transition:border-color 0.2s; }
+  .branch-box:hover { border-color:var(--purple); }
+  .branch-header { padding:16px 20px; display:flex; align-items:center; gap:12px; border-bottom:1px solid var(--border); }
+  .branch-title { font-weight:700; font-size:15px; }
+  .branch-sub   { font-size:12px; color:var(--muted); margin-top:2px; }
+  .branch-paths { display:grid; grid-template-columns:1fr 1fr; }
+  .branch-path  { padding:16px; }
+  .branch-path:first-child { border-right:1px solid var(--border); }
+  .branch-path-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:10px; }
+  .label-approve { color:var(--green); } .label-warn { color:var(--yellow); } .label-reject { color:var(--red); }
+  .branch-item { font-size:12px; color:var(--muted); display:flex; align-items:flex-start; gap:7px; margin-bottom:6px; }
+  .branch-item::before { content:''; width:5px; height:5px; border-radius:50%; margin-top:5px; flex-shrink:0; }
+  .path-approve .branch-item::before { background:var(--green); }
+  .path-warn    .branch-item::before { background:var(--yellow); }
+  .path-reject  .branch-item::before { background:var(--red); }
+
+  .final-card {
+    background:linear-gradient(135deg,rgba(124,111,247,0.12),rgba(45,212,191,0.08));
+    border:1px solid rgba(124,111,247,0.3); border-radius:14px; padding:20px; text-align:center; animation:fadeUp 0.4s ease both;
+  }
+  .final-icon  { font-size:28px; margin-bottom:10px; }
+  .final-title { font-weight:700; font-size:15px; margin-bottom:6px; }
+  .final-desc  { font-size:12px; color:var(--muted); }
+  .final-badges{ display:flex; justify-content:center; gap:8px; margin-top:12px; flex-wrap:wrap; }
+
+  .tag { display:inline-block; font-size:11px; font-weight:600; padding:3px 10px; border-radius:100px; }
+  .tag-green  { background:rgba(34,197,94,0.1);   color:var(--green); }
+  .tag-purple { background:rgba(124,111,247,0.1); color:var(--purple-light); }
+  .tag-teal   { background:rgba(45,212,191,0.1);  color:var(--teal); }
+  .tag-yellow { background:rgba(251,191,36,0.1);  color:var(--yellow); }
+  .tag-red    { background:rgba(248,113,113,0.1); color:var(--red); }
+  .tag-orange { background:rgba(251,146,60,0.1);  color:var(--orange); }
+  .tag-blue   { background:rgba(96,165,250,0.1);  color:var(--blue); }
+
+  .bg-purple{background:rgba(124,111,247,0.12)} .bg-teal{background:rgba(45,212,191,0.12)}
+  .bg-green {background:rgba(34,197,94,0.12)}   .bg-yellow{background:rgba(251,191,36,0.12)}
+  .bg-red   {background:rgba(248,113,113,0.12)}  .bg-blue{background:rgba(96,165,250,0.12)}
+  .bg-orange{background:rgba(251,146,60,0.12)}   .bg-pink{background:rgba(244,114,182,0.12)}
+
+  .rule-section { margin-bottom:28px; }
+  .rule-title { font-size:16px; font-weight:700; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border); }
+  .rule-grid  { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+  .rule-card  { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px; transition:border-color 0.2s; }
+  .rule-card.danger { border-left:3px solid var(--red); }
+  .rule-card.warn   { border-left:3px solid var(--yellow); }
+  .rule-card.ok     { border-left:3px solid var(--green); }
+  .rule-icon { font-size:20px; margin-bottom:10px; }
+  .rule-name { font-weight:600; font-size:13px; margin-bottom:6px; }
+  .rule-desc { font-size:12px; color:var(--muted); line-height:1.6; }
+
+  .hak-grid  { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px; }
+  .hak-box   { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:16px; }
+  .hak-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid var(--border); }
+  .hak-label.green { color:var(--green); } .hak-label.red { color:var(--red); }
+  .hak-item  { display:flex; gap:8px; font-size:12px; color:var(--muted); margin-bottom:8px; align-items:flex-start; line-height:1.5; }
+  .hak-dot   { width:5px; height:5px; border-radius:50%; margin-top:5px; flex-shrink:0; }
+  .dot-green { background:var(--green); } .dot-red { background:var(--red); }
+
+  .prod-header { border-radius:16px; padding:24px; margin-bottom:20px; display:flex; align-items:flex-start; gap:16px; }
+  .ph-blue   { background:rgba(96,165,250,0.08);  border:1px solid rgba(96,165,250,0.2); }
+  .ph-teal   { background:rgba(45,212,191,0.08);  border:1px solid rgba(45,212,191,0.2); }
+  .ph-yellow { background:rgba(251,191,36,0.08);  border:1px solid rgba(251,191,36,0.2); }
+  .prod-icon { width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center; font-size:24px; flex-shrink:0; }
+  .pi-blue{background:rgba(96,165,250,0.15)} .pi-teal{background:rgba(45,212,191,0.15)} .pi-yellow{background:rgba(251,191,36,0.15)}
   .prod-name { font-size:20px; font-weight:800; letter-spacing:-0.3px; margin-bottom:4px; }
   .prod-akad { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-bottom:6px; }
   .prod-desc { font-size:13px; color:var(--muted); line-height:1.6; }
-  .c-blue   { color: var(--blue); }
-  .c-teal   { color: var(--teal); }
-  .c-yellow { color: var(--yellow); }
+  .c-blue{color:var(--blue)} .c-teal{color:var(--teal)} .c-yellow{color:var(--yellow)}
 
-  .section { margin-bottom: 20px; }
-  .section-title {
-    font-size:11px; font-weight:700; letter-spacing:2px;
-    text-transform:uppercase; color:var(--muted); margin-bottom:10px; padding-left:2px;
-  }
-
-  .info-card {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius:12px; padding:18px 20px; margin-bottom:10px; transition: border-color 0.2s;
-  }
-  .info-card:hover { border-color: var(--dim); }
+  .section { margin-bottom:20px; }
+  .section-title { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:10px; padding-left:2px; }
+  .info-card { background:var(--surface); border:1px solid var(--border); border-radius:12px; padding:18px 20px; margin-bottom:10px; transition:border-color 0.2s; }
+  .info-card:hover { border-color:var(--dim); }
   .info-card-title { font-weight:600; font-size:13px; margin-bottom:8px; display:flex; align-items:center; gap:8px; }
   .info-card-body  { font-size:13px; color:var(--muted); line-height:1.7; }
-  .info-card-body strong { color: var(--text); }
-
+  .info-card-body strong { color:var(--text); }
   .item-list { display:flex; flex-direction:column; gap:6px; }
-  .item {
-    display:flex; gap:10px; font-size:13px; color:var(--muted);
-    line-height:1.5; align-items:flex-start;
-  }
+  .item { display:flex; gap:10px; font-size:13px; color:var(--muted); line-height:1.5; align-items:flex-start; }
   .item-dot { width:5px; height:5px; border-radius:50%; margin-top:7px; flex-shrink:0; }
-  .dot-blue   { background: var(--blue); }
-  .dot-teal   { background: var(--teal); }
-  .dot-yellow { background: var(--yellow); }
-  .dot-red    { background: var(--red); }
-
-  .formula {
-    display:flex; align-items:center; gap:8px;
-    background:var(--surface2); border:1px solid var(--border);
-    border-radius:10px; padding:12px 16px; margin-top:10px; flex-wrap:wrap; font-size:13px;
-  }
+  .dot-blue{background:var(--blue)} .dot-teal{background:var(--teal)} .dot-yellow{background:var(--yellow)} .dot-red{background:var(--red)}
+  .formula { display:flex; align-items:center; gap:8px; background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:12px 16px; margin-top:10px; flex-wrap:wrap; font-size:13px; }
   .formula-part { font-weight:600; padding:4px 10px; border-radius:6px; }
   .formula-op   { color:var(--dim); font-size:16px; font-weight:700; }
-  .fp-blue   { background:rgba(96,165,250,0.12);  color:var(--blue); }
-  .fp-teal   { background:rgba(45,212,191,0.12);  color:var(--teal); }
-  .fp-yellow { background:rgba(251,191,36,0.12);  color:var(--yellow); }
-  .fp-green  { background:rgba(34,197,94,0.12);   color:var(--green); }
-  .fp-purple { background:rgba(124,111,247,0.12); color:var(--purple-light); }
-
-  .warn-card {
-    background:rgba(248,113,113,0.06); border:1px solid rgba(248,113,113,0.2);
-    border-radius:12px; padding:16px 18px; margin-bottom:10px;
-  }
+  .fp-blue{background:rgba(96,165,250,0.12);color:var(--blue)} .fp-teal{background:rgba(45,212,191,0.12);color:var(--teal)}
+  .fp-yellow{background:rgba(251,191,36,0.12);color:var(--yellow)} .fp-green{background:rgba(34,197,94,0.12);color:var(--green)}
+  .fp-purple{background:rgba(124,111,247,0.12);color:var(--purple-light)}
+  .warn-card { background:rgba(248,113,113,0.06); border:1px solid rgba(248,113,113,0.2); border-radius:12px; padding:16px 18px; margin-bottom:10px; }
   .warn-card-title { font-size:12px; font-weight:700; color:var(--red); margin-bottom:8px; display:flex; align-items:center; gap:6px; }
   .warn-card-body  { font-size:12px; color:var(--muted); line-height:1.6; }
-
-  .ok-card {
-    background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.2);
-    border-radius:12px; padding:16px 18px; margin-bottom:10px;
-  }
+  .ok-card { background:rgba(34,197,94,0.06); border:1px solid rgba(34,197,94,0.2); border-radius:12px; padding:16px 18px; margin-bottom:10px; }
   .ok-card-title { font-size:12px; font-weight:700; color:var(--green); margin-bottom:8px; }
   .ok-card-body  { font-size:12px; color:var(--muted); line-height:1.6; }
-
-  .cta {
-    background:linear-gradient(135deg,rgba(124,111,247,0.12),rgba(45,212,191,0.08));
-    border:1px solid rgba(124,111,247,0.25);
-    border-radius:14px; padding:22px; text-align:center; margin-top:24px;
-  }
+  .cta { background:linear-gradient(135deg,rgba(124,111,247,0.12),rgba(45,212,191,0.08)); border:1px solid rgba(124,111,247,0.25); border-radius:14px; padding:22px; text-align:center; margin-top:24px; }
   .cta-text { font-size:14px; font-weight:600; margin-bottom:12px; }
   .cta-sub  { font-size:12px; color:var(--muted); margin-bottom:16px; }
-  .cta-btn {
-    display:inline-block; background:var(--purple); color:white;
-    font-weight:700; font-size:13px; padding:12px 28px;
-    border-radius:100px; text-decoration:none;
-    transition: background 0.2s, transform 0.15s;
-  }
+  .cta-btn  { display:inline-block; background:var(--purple); color:white; font-weight:700; font-size:13px; padding:12px 28px; border-radius:100px; text-decoration:none; transition:background 0.2s,transform 0.15s; }
   .cta-btn:hover { background:var(--purple-light); transform:translateY(-2px); }
-
   .two-col { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
 
-  /* animation delays */
-  .s1{animation-delay:.05s} .s2{animation-delay:.1s} .s3{animation-delay:.15s}
+  /* ══ KONTRAK STYLES ══ */
+  .kontrak-banner {
+    background:linear-gradient(135deg,rgba(124,111,247,0.08),rgba(45,212,191,0.05));
+    border:1px solid rgba(124,111,247,0.2); border-radius:14px; padding:18px 20px;
+    margin-bottom:24px; display:flex; align-items:flex-start; gap:14px;
+  }
+  .kb-icon  { font-size:26px; flex-shrink:0; margin-top:2px; }
+  .kb-title { font-weight:700; font-size:14px; margin-bottom:5px; }
+  .kb-sub   { font-size:12px; color:var(--muted); line-height:1.6; }
+  .flex-badge {
+    display:inline-flex; align-items:center; gap:5px;
+    background:rgba(251,191,36,0.1); border:1px solid rgba(251,191,36,0.25);
+    color:var(--yellow); font-size:11px; font-weight:700;
+    padding:4px 12px; border-radius:100px; margin-top:8px;
+  }
+
+  .kontrak-summary { background:var(--surface2); border:1px solid var(--border); border-radius:12px; padding:16px 18px; margin-bottom:16px; }
+  .ks-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:12px; }
+  .ks-row   { display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--border); font-size:12px; gap:12px; }
+  .ks-row:last-child { border-bottom:none; }
+  .ks-key   { color:var(--muted); flex-shrink:0; }
+  .ks-val   { font-weight:600; text-align:right; }
+  .ks-flex  { color:var(--yellow); font-weight:700; font-style:italic; text-align:right; }
+
+  .pasal-card {
+    background:var(--surface); border:1px solid var(--border);
+    border-radius:12px; overflow:hidden; margin-bottom:8px; transition:border-color 0.2s;
+  }
+  .pasal-card:hover { border-color:var(--dim); }
+  .pasal-header {
+    padding:14px 18px; cursor:pointer;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    user-select:none; transition:background 0.15s;
+  }
+  .pasal-header:hover { background:rgba(255,255,255,0.02); }
+  .pasal-left  { display:flex; align-items:center; gap:10px; flex:1; min-width:0; }
+  .pasal-num   {
+    background:rgba(124,111,247,0.12); border:1px solid rgba(124,111,247,0.25);
+    color:var(--purple-light); font-size:10px; font-weight:700;
+    letter-spacing:1.5px; padding:3px 10px; border-radius:6px; white-space:nowrap; flex-shrink:0;
+  }
+  .pasal-title  { font-weight:700; font-size:13px; }
+  .pasal-chevron { color:var(--dim); font-size:13px; transition:transform 0.2s; flex-shrink:0; }
+  .pasal-card.open .pasal-chevron { transform:rotate(180deg); }
+  .pasal-body   { display:none; padding:4px 18px 16px; border-top:1px solid var(--border); }
+  .pasal-card.open .pasal-body { display:block; animation:fadeUp 0.25s ease both; }
+
+  .pasal-item { display:flex; gap:10px; font-size:12px; color:var(--muted); line-height:1.6; align-items:flex-start; margin-top:10px; }
+  .pasal-dot  { width:5px; height:5px; border-radius:50%; background:var(--purple); margin-top:6px; flex-shrink:0; }
+  .pasal-dot.red    { background:var(--red); }
+  .pasal-dot.green  { background:var(--green); }
+  .pasal-dot.yellow { background:var(--yellow); }
+  .pasal-dot.teal   { background:var(--teal); }
+  .pasal-dot.blue   { background:var(--blue); }
+  .pasal-item strong { color:var(--text); }
+
+  .margin-box {
+    background:rgba(45,212,191,0.05); border:1px solid rgba(45,212,191,0.2);
+    border-radius:10px; padding:14px 16px; margin-top:10px;
+  }
+  .mb-label { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--teal); margin-bottom:10px; }
+  .mb-row   { display:flex; justify-content:space-between; align-items:center; font-size:12px; padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.04); gap:10px; }
+  .mb-row:last-child { border-bottom:none; }
+  .mb-key   { color:var(--muted); flex-shrink:0; }
+  .mb-val   { font-weight:600; text-align:right; }
+  .mb-flex  { color:var(--yellow); font-weight:700; font-style:italic; text-align:right; }
+
+  .risiko-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:12px; }
+  .risiko-card { background:var(--surface2); border:1px solid var(--border); border-radius:10px; padding:14px; text-align:center; }
+  .risiko-num  { font-size:26px; font-weight:800; margin-bottom:4px; }
+  .risiko-lbl  { font-size:11px; color:var(--muted); line-height:1.4; }
+
+  .s1{animation-delay:.05s} .s2{animation-delay:.1s}  .s3{animation-delay:.15s}
   .s4{animation-delay:.2s}  .s5{animation-delay:.25s} .s6{animation-delay:.3s}
   .s7{animation-delay:.35s} .s8{animation-delay:.4s}
 
-  @media(max-width:480px){
-    .two-col{grid-template-columns:1fr}
-    .hak-grid{grid-template-columns:1fr}
+  @media(max-width:520px){
+    .two-col{grid-template-columns:1fr} .hak-grid{grid-template-columns:1fr}
     .branch-paths{grid-template-columns:1fr}
     .branch-path:first-child{border-right:none;border-bottom:1px solid var(--border)}
+    .risiko-grid{grid-template-columns:1fr 1fr}
   }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════ TOPBAR ═══════════════════ -->
+<!-- TOPBAR -->
 <div class="topbar">
   <span>🤝</span>
   <span class="topbar-title">Panduan Partner — KRESA</span>
@@ -430,104 +313,75 @@
   <div class="topbar-live"><div class="live-dot"></div>LIVE</div>
 </div>
 
-<!-- ═══════════════════ MAIN NAV ═══════════════════ -->
+<!-- MAIN NAV — 3 items -->
 <div class="main-nav">
   <div class="mnav active" onclick="showPage('sop')">📋 SOP Partner</div>
   <div class="mnav"        onclick="showPage('produk')">🛒 Informasi Produk</div>
+  <div class="mnav"        onclick="showPage('kontrak')">📄 Ringkasan Kontrak</div>
 </div>
 
 
-<!-- ══════════════════════════════════════════════════
-     PAGE 1 — SOP PARTNER
-══════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     PAGE 1 · SOP PARTNER
+══════════════════════════════════════ -->
 <div class="page active" id="sop">
-
   <div class="hero">
     <div class="hero-icon">🤝</div>
     <h1>SOP Partner</h1>
     <p class="hero-sub">Panduan kerja Partner · Freelance · Sesuai Kontrak</p>
   </div>
-
   <div class="tabs" id="sop-tabs">
     <div class="tab active" onclick="showSubTab('sop','alur',0)">📋 Alur Kerja</div>
     <div class="tab"        onclick="showSubTab('sop','aturan',1)">⚖️ Aturan & Ketentuan</div>
     <div class="tab"        onclick="showSubTab('sop','hak',2)">📑 Hak & Kewajiban</div>
   </div>
-
   <div class="content">
 
-    <!-- ALUR KERJA -->
+    <!-- ALUR -->
     <div class="tab-pane active" id="sop-alur">
       <div class="node-cap"><div class="cap-pill">START</div></div>
       <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
-
       <div class="step-card s1">
-        <div class="step-top">
-          <div class="step-icon bg-purple">📋</div>
-          <div>
-            <div class="step-num">Langkah 01</div>
-            <div class="step-title">Pendaftaran & Kontrak</div>
-            <div class="step-desc"><a href="https://kresa.online/" target="_blank" style="color:var(--purple-light);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(124,111,247,0.4);">Daftar via aplikasi</a> → Owner review → Akun diupgrade ke Partner. <strong>Kontrak kerja ditandatangani</strong> sebelum mulai aktif — memuat tugas, komisi, dan ketentuan lainnya</div>
-            <div class="step-tags">
-              <span class="tag tag-purple">Kontrak Wajib</span>
-              <span class="tag tag-yellow">Owner Upgrade Akun</span>
-            </div>
-          </div>
-        </div>
+        <div class="step-top"><div class="step-icon bg-purple">📋</div><div>
+          <div class="step-num">Langkah 01</div>
+          <div class="step-title">Pendaftaran & Kontrak</div>
+          <div class="step-desc"><a href="https://kresa.online/" target="_blank" style="color:var(--purple-light);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(124,111,247,0.4);">Daftar via aplikasi</a> → Owner review → Akun diupgrade ke Partner. <strong>Kontrak kerja ditandatangani</strong> sebelum mulai aktif</div>
+          <div class="step-tags"><span class="tag tag-purple">Kontrak Wajib</span><span class="tag tag-yellow">Owner Upgrade Akun</span></div>
+        </div></div>
       </div>
-
       <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
-
       <div class="step-card s2">
-        <div class="step-top">
-          <div class="step-icon bg-teal">📣</div>
-          <div>
-            <div class="step-num">Langkah 02</div>
-            <div class="step-title">Promosi & Pencarian Nasabah</div>
-            <div class="step-desc">Partner menjalankan tugas sesuai kontrak — umumnya mencari calon nasabah melalui jaringan pribadi, sosial media, atau komunitas lokal</div>
-            <div class="step-tags"><span class="tag tag-teal">Sesuai Kontrak</span></div>
-          </div>
-        </div>
+        <div class="step-top"><div class="step-icon bg-teal">📣</div><div>
+          <div class="step-num">Langkah 02</div>
+          <div class="step-title">Promosi & Pencarian Nasabah</div>
+          <div class="step-desc">Partner menjalankan tugas sesuai kontrak — mencari calon nasabah melalui jaringan pribadi, sosial media, atau komunitas lokal</div>
+          <div class="step-tags"><span class="tag tag-teal">Sesuai Kontrak</span></div>
+        </div></div>
       </div>
-
       <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
-
       <div class="step-card s3">
-        <div class="step-top">
-          <div class="step-icon bg-blue">🔗</div>
-          <div>
-            <div class="step-num">Langkah 03</div>
-            <div class="step-title">Referral & Onboarding Nasabah</div>
-            <div class="step-desc">Bantu calon nasabah mendaftar di aplikasi. Pastikan referral tercatat agar komisi terhitung otomatis. Dampingi proses pengisian dokumen jika diperlukan</div>
-            <div class="step-tags"><span class="tag tag-green">✓ Referral Tercatat</span></div>
-          </div>
-        </div>
+        <div class="step-top"><div class="step-icon bg-blue">🔗</div><div>
+          <div class="step-num">Langkah 03</div>
+          <div class="step-title">Referral & Onboarding Nasabah</div>
+          <div class="step-desc">Bantu calon nasabah mendaftar di aplikasi. Pastikan referral tercatat agar komisi terhitung otomatis</div>
+          <div class="step-tags"><span class="tag tag-green">✓ Referral Tercatat</span></div>
+        </div></div>
       </div>
-
       <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
-
       <div class="step-card s4">
-        <div class="step-top">
-          <div class="step-icon bg-yellow">⏳</div>
-          <div>
-            <div class="step-num">Langkah 04</div>
-            <div class="step-title">Proses Verifikasi & Approval oleh Owner</div>
-            <div class="step-desc">Seluruh proses verifikasi, analisa, dan keputusan ada di tangan Owner. Partner <strong>tidak terlibat</strong> di proses internal ini</div>
-            <div class="step-tags"><span class="tag tag-yellow">Ditangani Owner</span></div>
-          </div>
-        </div>
+        <div class="step-top"><div class="step-icon bg-yellow">⏳</div><div>
+          <div class="step-num">Langkah 04</div>
+          <div class="step-title">Proses Verifikasi & Approval oleh Owner</div>
+          <div class="step-desc">Seluruh proses verifikasi, analisa, dan keputusan ada di tangan Owner. Partner <strong>tidak terlibat</strong> di proses internal ini</div>
+          <div class="step-tags"><span class="tag tag-yellow">Ditangani Owner</span></div>
+        </div></div>
       </div>
-
       <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
-
       <div class="branch-box s5">
-        <div class="branch-header">
-          <div class="step-icon bg-purple">⚖️</div>
-          <div>
-            <div class="branch-title">Hasil Approval</div>
-            <div class="branch-sub">Keputusan di tangan Owner</div>
-          </div>
-        </div>
+        <div class="branch-header"><div class="step-icon bg-purple">⚖️</div><div>
+          <div class="branch-title">Hasil Approval</div>
+          <div class="branch-sub">Keputusan di tangan Owner</div>
+        </div></div>
         <div class="branch-paths">
           <div class="branch-path path-approve">
             <div class="branch-path-label label-approve">✓ Disetujui</div>
@@ -543,31 +397,21 @@
           </div>
         </div>
       </div>
-
       <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
-
       <div class="step-card s6">
-        <div class="step-top">
-          <div class="step-icon bg-orange">🔔</div>
-          <div>
-            <div class="step-num">Langkah 06</div>
-            <div class="step-title">Ingatkan Jadwal Bayar Nasabah</div>
-            <div class="step-desc">Partner membantu mengingatkan nasabah referral menjelang jatuh tempo cicilan — mengurangi risiko kredit macet dan menjaga kelancaran komisi</div>
-            <div class="step-tags"><span class="tag tag-orange">Opsional tapi Dianjurkan</span></div>
-          </div>
-        </div>
+        <div class="step-top"><div class="step-icon bg-orange">🔔</div><div>
+          <div class="step-num">Langkah 06</div>
+          <div class="step-title">Ingatkan Jadwal Bayar Nasabah</div>
+          <div class="step-desc">Partner membantu mengingatkan nasabah referral menjelang jatuh tempo cicilan</div>
+          <div class="step-tags"><span class="tag tag-orange">Opsional tapi Dianjurkan</span></div>
+        </div></div>
       </div>
-
       <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
-
       <div class="branch-box s7">
-        <div class="branch-header">
-          <div class="step-icon bg-red">⚠️</div>
-          <div>
-            <div class="branch-title">Jika Nasabah Macet</div>
-            <div class="branch-sub">Nasabah referral tidak membayar</div>
-          </div>
-        </div>
+        <div class="branch-header"><div class="step-icon bg-red">⚠️</div><div>
+          <div class="branch-title">Jika Nasabah Macet</div>
+          <div class="branch-sub">Nasabah referral tidak membayar</div>
+        </div></div>
         <div class="branch-paths">
           <div class="branch-path path-warn">
             <div class="branch-path-label label-warn">⚡ Kewajiban Partner</div>
@@ -583,36 +427,22 @@
           </div>
         </div>
       </div>
-
       <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
-
       <div class="step-card s8">
-        <div class="step-top">
-          <div class="step-icon bg-green">💰</div>
-          <div>
-            <div class="step-num">Langkah 08</div>
-            <div class="step-title">Penerimaan Komisi / Margin Sharing</div>
-            <div class="step-desc">Komisi dihitung otomatis di aplikasi. Pembayaran dilakukan <strong>sesuai jadwal dan skema yang tertulis di kontrak</strong></div>
-            <div class="step-tags">
-              <span class="tag tag-green">Sesuai Kontrak</span>
-              <span class="tag tag-teal">Otomatis di App</span>
-            </div>
-          </div>
-        </div>
+        <div class="step-top"><div class="step-icon bg-green">💰</div><div>
+          <div class="step-num">Langkah 08</div>
+          <div class="step-title">Penerimaan Komisi / Margin Sharing</div>
+          <div class="step-desc">Komisi dihitung otomatis di aplikasi. Pembayaran dilakukan <strong>sesuai jadwal dan skema yang tertulis di kontrak</strong></div>
+          <div class="step-tags"><span class="tag tag-green">Sesuai Kontrak</span><span class="tag tag-teal">Otomatis di App</span></div>
+        </div></div>
       </div>
-
       <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
-
       <div class="final-card">
         <div class="final-icon">🚀</div>
         <div class="final-title">Partner Aktif & Konsisten</div>
-        <div class="final-desc">Partner dengan performa baik berpeluang mendapat tugas lebih, komisi lebih tinggi, dan kerjasama jangka panjang sesuai perkembangan kontrak</div>
-        <div class="final-badges">
-          <span class="tag tag-green">Komisi Bertambah</span>
-          <span class="tag tag-purple">Kontrak Diperpanjang</span>
-        </div>
+        <div class="final-desc">Partner dengan performa baik berpeluang mendapat tugas lebih, komisi lebih tinggi, dan kerjasama jangka panjang</div>
+        <div class="final-badges"><span class="tag tag-green">Komisi Bertambah</span><span class="tag tag-purple">Kontrak Diperpanjang</span></div>
       </div>
-
       <div class="arrow"><div class="arrow-line"></div><div class="arrow-head"></div></div>
       <div class="node-cap"><div class="cap-pill end">END</div></div>
     </div>
@@ -626,8 +456,8 @@
           <div class="rule-card ok"><div class="rule-icon">🔗</div><div class="rule-name">Referral Wajib Dicatat di App</div><div class="rule-desc">Nasabah harus didaftarkan melalui sistem agar referral tercatat dan komisi terhitung otomatis</div></div>
           <div class="rule-card warn"><div class="rule-icon">📢</div><div class="rule-name">Lapor Jika Ada Masalah</div><div class="rule-desc">Nasabah macet, keluhan, atau situasi tidak biasa wajib dilaporkan ke Owner — jangan ditangani sendiri</div></div>
           <div class="rule-card warn"><div class="rule-icon">🤐</div><div class="rule-name">Jaga Kerahasiaan Data</div><div class="rule-desc">Data nasabah bersifat rahasia — tidak boleh disebarkan ke pihak luar dalam bentuk apapun</div></div>
-          <div class="rule-card danger"><div class="rule-icon">🚫</div><div class="rule-name">Dilarang Pegang Uang Nasabah</div><div class="rule-desc">Semua transaksi dana langsung ke rekening Owner. Partner tidak boleh menerima atau memegang uang nasabah dalam kondisi apapun</div></div>
-          <div class="rule-card danger"><div class="rule-icon">⛔</div><div class="rule-name">Dilarang Negosiasi Sendiri</div><div class="rule-desc">Penyelesaian kredit macet atau renegosisasi kontrak nasabah sepenuhnya wewenang Owner</div></div>
+          <div class="rule-card danger"><div class="rule-icon">🚫</div><div class="rule-name">Dilarang Pegang Uang Nasabah</div><div class="rule-desc">Semua transaksi dana langsung ke rekening Owner. Partner tidak boleh menerima uang nasabah dalam kondisi apapun</div></div>
+          <div class="rule-card danger"><div class="rule-icon">⛔</div><div class="rule-name">Dilarang Negosiasi Sendiri</div><div class="rule-desc">Penyelesaian kredit macet atau renegosiasi kontrak nasabah sepenuhnya wewenang Owner</div></div>
         </div>
       </div>
     </div>
@@ -657,282 +487,370 @@
         <div class="rule-grid">
           <div class="rule-card ok"><div class="rule-icon">⚡</div><div class="rule-name">Hitung Otomatis di Aplikasi</div><div class="rule-desc">Kalkulasi komisi berjalan otomatis berdasarkan transaksi nasabah referral yang berhasil cair</div></div>
           <div class="rule-card warn"><div class="rule-icon">📅</div><div class="rule-name">Jadwal Pembayaran</div><div class="rule-desc">Dibayarkan per transaksi selesai atau rekap bulanan — sesuai kesepakatan yang tertulis di kontrak</div></div>
-          <div class="rule-card danger"><div class="rule-icon">❌</div><div class="rule-name">Tidak Ada Komisi Jika Nasabah Macet</div><div class="rule-desc">Komisi hanya dihitung dari transaksi nasabah yang berjalan lancar sesuai ketentuan kontrak</div></div>
+          <div class="rule-card danger"><div class="rule-icon">❌</div><div class="rule-name">Komisi Ditangguhkan Jika Macet</div><div class="rule-desc">Komisi ditangguhkan pada transaksi gagal bayar hingga nasabah melunasi kewajibannya</div></div>
         </div>
       </div>
     </div>
 
-  </div><!-- /content -->
+  </div>
 </div><!-- /page sop -->
 
 
-<!-- ══════════════════════════════════════════════════
-     PAGE 2 — INFORMASI PRODUK
-══════════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     PAGE 2 · INFORMASI PRODUK
+══════════════════════════════════════ -->
 <div class="page" id="produk">
-
   <div class="hero">
     <div class="hero-icon">🛒</div>
     <h1>Informasi Produk</h1>
     <p class="hero-sub">Pembiayaan Syariah · Jual Beli · Dana Talang · Gadai</p>
   </div>
-
   <div class="tabs" id="produk-tabs">
     <div class="tab t1 active" onclick="showSubTab('produk','murabahah',0)">🛒 Jual Beli</div>
     <div class="tab t2"        onclick="showSubTab('produk','wakalah',1)">💵 Dana Talang</div>
     <div class="tab t3"        onclick="showSubTab('produk','rahn',2)">💎 Gadai</div>
   </div>
-
   <div class="content">
 
     <!-- MURABAHAH -->
     <div class="tab-pane active" id="produk-murabahah">
-      <div class="prod-header ph-blue">
-        <div class="prod-icon pi-blue">🛒</div>
-        <div>
-          <div class="prod-akad c-blue">Akad Murabahah</div>
-          <div class="prod-name">Jual Beli</div>
-          <div class="prod-desc">Pembiayaan barang dengan sistem jual beli syariah — owner beli barang atas permintaan nasabah, nasabah angsur sesuai harga yang disepakati di awal.</div>
+      <div class="prod-header ph-blue"><div class="prod-icon pi-blue">🛒</div><div>
+        <div class="prod-akad c-blue">Akad Murabahah</div>
+        <div class="prod-name">Jual Beli</div>
+        <div class="prod-desc">Pembiayaan barang dengan sistem jual beli syariah — owner beli barang atas permintaan nasabah, nasabah angsur sesuai harga yang disepakati di awal.</div>
+      </div></div>
+      <div class="section"><div class="section-title">Cara Kerja</div>
+        <div class="info-card"><div class="info-card-body item-list">
+          <div class="item"><div class="item-dot dot-blue"></div><span>Nasabah mengajukan barang yang ingin dibeli</span></div>
+          <div class="item"><div class="item-dot dot-blue"></div><span>Owner membeli barang tersebut atas nama sendiri</span></div>
+          <div class="item"><div class="item-dot dot-blue"></div><span>Owner menjual ke nasabah dengan harga pokok + margin yang disepakati di awal</span></div>
+          <div class="item"><div class="item-dot dot-blue"></div><span>Nasabah membayar secara angsuran bulanan sesuai tenor (1–24 bulan)</span></div>
+        </div>
+        <div class="formula"><span class="formula-part fp-blue">Harga Beli</span><span class="formula-op">+</span><span class="formula-part fp-purple">Margin</span><span class="formula-op">=</span><span class="formula-part fp-green">Harga Jual</span></div>
         </div>
       </div>
-
-      <div class="section">
-        <div class="section-title">Cara Kerja</div>
-        <div class="info-card">
-          <div class="info-card-body item-list">
-            <div class="item"><div class="item-dot dot-blue"></div><span>Nasabah mengajukan barang yang ingin dibeli</span></div>
-            <div class="item"><div class="item-dot dot-blue"></div><span>Owner membeli barang tersebut atas nama sendiri</span></div>
-            <div class="item"><div class="item-dot dot-blue"></div><span>Owner menjual ke nasabah dengan harga pokok + margin yang disepakati di awal</span></div>
-            <div class="item"><div class="item-dot dot-blue"></div><span>Nasabah membayar secara angsuran bulanan sesuai tenor</span></div>
-          </div>
-          <div class="formula">
-            <span class="formula-part fp-blue">Harga Beli</span>
-            <span class="formula-op">+</span>
-            <span class="formula-part fp-purple">Margin</span>
-            <span class="formula-op">=</span>
-            <span class="formula-part fp-green">Harga Jual</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="section-title">Ketentuan Pembayaran</div>
+      <div class="section"><div class="section-title">Ketentuan Pembayaran</div>
         <div class="two-col">
-          <div class="info-card"><div class="info-card-title">📅 Cicilan</div><div class="info-card-body">Dibayar setiap bulan pada tanggal yang disepakati saat akad. Jumlah cicilan tetap selama tenor berlangsung.</div></div>
-          <div class="info-card"><div class="info-card-title">📋 Transparansi</div><div class="info-card-body">Harga beli dan margin diketahui nasabah sejak awal. <strong>Tidak ada biaya tersembunyi.</strong></div></div>
+          <div class="info-card"><div class="info-card-title">📅 Cicilan</div><div class="info-card-body">Dibayar setiap bulan pada tanggal yang disepakati. Jumlah cicilan <strong>tetap</strong> selama tenor.</div></div>
+          <div class="info-card"><div class="info-card-title">📋 Transparansi</div><div class="info-card-body">Harga beli dan margin diketahui sejak awal. <strong>Tidak ada biaya tersembunyi.</strong></div></div>
         </div>
       </div>
-
-      <div class="section">
-        <div class="section-title">Keterlambatan Pembayaran</div>
-        <div class="warn-card"><div class="warn-card-title">⚠️ Denda Keterlambatan</div><div class="warn-card-body">Jika terlambat lebih dari <strong>3 hari</strong> dari tanggal jatuh tempo, dikenakan denda <strong>Rp 2.500 per hari</strong> keterlambatan.</div></div>
-        <div class="ok-card"><div class="ok-card-title">✓ Dana Denda untuk Sosial</div><div class="ok-card-body">Denda <strong>tidak menjadi hak owner</strong> — disalurkan sebagai dana sosial kepada fakir miskin sesuai prinsip syariah.</div></div>
+      <div class="section"><div class="section-title">Keterlambatan Pembayaran</div>
+        <div class="warn-card"><div class="warn-card-title">⚠️ Denda Keterlambatan</div><div class="warn-card-body">Terlambat lebih dari <strong>3 hari</strong> → denda <strong>Rp 2.500/hari</strong>.</div></div>
+        <div class="ok-card"><div class="ok-card-title">✓ Dana Denda untuk Sosial</div><div class="ok-card-body">Denda <strong>tidak menjadi hak owner</strong> — disalurkan sebagai dana sosial kepada fakir miskin.</div></div>
       </div>
-
-      <div class="section">
-        <div class="section-title">Ketentuan Penting</div>
-        <div class="info-card">
-          <div class="info-card-title">📦 Barang & Garansi</div>
-          <div class="info-card-body item-list">
-            <div class="item"><div class="item-dot dot-blue"></div><span>Setelah barang diterima, risiko kerusakan dan kehilangan menjadi tanggung jawab nasabah</span></div>
-            <div class="item"><div class="item-dot dot-blue"></div><span>Garansi mengikuti garansi resmi pabrik/distributor — klaim langsung ke service center resmi</span></div>
-            <div class="item"><div class="item-dot dot-blue"></div><span>Owner tidak memberikan garansi tambahan di luar garansi pabrik</span></div>
-          </div>
-        </div>
-        <div class="info-card">
-          <div class="info-card-title">⚖️ Jika Nasabah Meninggal Dunia</div>
-          <div class="info-card-body item-list">
-            <div class="item"><div class="item-dot dot-blue"></div><span>Barang dapat dijual melalui musyawarah dengan ahli waris</span></div>
-            <div class="item"><div class="item-dot dot-blue"></div><span>Hasil penjualan digunakan untuk melunasi sisa hutang terlebih dahulu</span></div>
-            <div class="item"><div class="item-dot dot-blue"></div><span>Kelebihan hasil penjualan diserahkan kepada ahli waris yang sah</span></div>
-          </div>
-        </div>
-        <div class="info-card">
-          <div class="info-card-title">🏛 Penyelesaian Sengketa</div>
-          <div class="info-card-body">Diselesaikan secara musyawarah terlebih dahulu. Jika tidak tercapai, melalui <strong>Badan Arbitrase Syariah Nasional (Basyarnas)</strong> — keputusan final dan mengikat.</div>
-        </div>
+      <div class="section"><div class="section-title">Ketentuan Penting</div>
+        <div class="info-card"><div class="info-card-title">📦 Barang & Garansi</div><div class="info-card-body item-list">
+          <div class="item"><div class="item-dot dot-blue"></div><span>Risiko barang setelah diterima menjadi tanggung jawab nasabah</span></div>
+          <div class="item"><div class="item-dot dot-blue"></div><span>Garansi mengikuti garansi resmi pabrik/distributor</span></div>
+        </div></div>
+        <div class="info-card"><div class="info-card-title">⚖️ Jika Nasabah Meninggal</div><div class="info-card-body">Barang dijual via musyawarah ahli waris → lunasi sisa hutang → kelebihan ke ahli waris.</div></div>
+        <div class="info-card"><div class="info-card-title">🏛 Penyelesaian Sengketa</div><div class="info-card-body">Musyawarah → <strong>Basyarnas</strong> (final & mengikat)</div></div>
       </div>
-
-      <div class="cta">
-        <div class="cta-text">Tertarik dengan produk Jual Beli?</div>
-        <div class="cta-sub">Ajukan sekarang melalui aplikasi KRESA</div>
-        <a href="https://kresa.online/" target="_blank" class="cta-btn">Ajukan Sekarang →</a>
-      </div>
+      <div class="cta"><div class="cta-text">Tertarik dengan produk Jual Beli?</div><div class="cta-sub">Ajukan sekarang melalui aplikasi KRESA</div><a href="https://kresa.online/" target="_blank" class="cta-btn">Ajukan Sekarang →</a></div>
     </div>
 
     <!-- WAKALAH -->
     <div class="tab-pane" id="produk-wakalah">
-      <div class="prod-header ph-teal">
-        <div class="prod-icon pi-teal">💵</div>
-        <div>
-          <div class="prod-akad c-teal">Akad Wakalah bil Ujrah</div>
-          <div class="prod-name">Dana Talang</div>
-          <div class="prod-desc">Owner bertindak sebagai wakil untuk membayar kebutuhan nasabah, nasabah mengembalikan dana talangan beserta ujrah (upah jasa) yang disepakati.</div>
+      <div class="prod-header ph-teal"><div class="prod-icon pi-teal">💵</div><div>
+        <div class="prod-akad c-teal">Akad Wakalah bil Ujrah</div>
+        <div class="prod-name">Dana Talang</div>
+        <div class="prod-desc">Owner bertindak sebagai wakil untuk membayar kebutuhan nasabah, nasabah mengembalikan dana talangan beserta ujrah (upah jasa) yang disepakati.</div>
+      </div></div>
+      <div class="section"><div class="section-title">Cara Kerja</div>
+        <div class="info-card"><div class="info-card-body item-list">
+          <div class="item"><div class="item-dot dot-teal"></div><span>Nasabah memberikan kuasa kepada owner untuk membayar kebutuhannya</span></div>
+          <div class="item"><div class="item-dot dot-teal"></div><span>Owner membayar dan mengurus proses sampai selesai</span></div>
+          <div class="item"><div class="item-dot dot-teal"></div><span>Nasabah mengembalikan dana talangan + ujrah secara cicilan</span></div>
+        </div>
+        <div class="formula"><span class="formula-part fp-teal">Dana Talangan</span><span class="formula-op">+</span><span class="formula-part fp-purple">Ujrah</span><span class="formula-op">=</span><span class="formula-part fp-green">Total Kewajiban</span></div>
         </div>
       </div>
-
-      <div class="section">
-        <div class="section-title">Cara Kerja</div>
-        <div class="info-card">
-          <div class="info-card-body item-list">
-            <div class="item"><div class="item-dot dot-teal"></div><span>Nasabah memberikan kuasa kepada owner untuk membayar kebutuhannya</span></div>
-            <div class="item"><div class="item-dot dot-teal"></div><span>Owner membayar dan mengurus proses sampai selesai</span></div>
-            <div class="item"><div class="item-dot dot-teal"></div><span>Nasabah mengembalikan dana talangan + ujrah secara cicilan</span></div>
-          </div>
-          <div class="formula">
-            <span class="formula-part fp-teal">Dana Talangan</span>
-            <span class="formula-op">+</span>
-            <span class="formula-part fp-purple">Ujrah</span>
-            <span class="formula-op">=</span>
-            <span class="formula-part fp-green">Total Kewajiban</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="section-title">Yang Perlu Dipahami</div>
+      <div class="section"><div class="section-title">Yang Perlu Dipahami</div>
         <div class="two-col">
-          <div class="ok-card"><div class="ok-card-title">✓ Dana Talangan</div><div class="ok-card-body">Bukan pinjaman berbunga. Nasabah hanya mengembalikan <strong>nominal yang sama</strong> — tidak ada tambahan atas dana talangan itu sendiri.</div></div>
-          <div class="ok-card"><div class="ok-card-title">✓ Ujrah (Upah Jasa)</div><div class="ok-card-body"><strong>Berdiri sendiri</strong> — kompensasi atas jasa pengurusan, bukan bunga, tidak dikaitkan dengan jumlah atau waktu.</div></div>
+          <div class="ok-card"><div class="ok-card-title">✓ Dana Talangan</div><div class="ok-card-body">Bukan pinjaman berbunga. Nasabah hanya kembalikan <strong>nominal yang sama</strong>.</div></div>
+          <div class="ok-card"><div class="ok-card-title">✓ Ujrah (Upah Jasa)</div><div class="ok-card-body"><strong>Berdiri sendiri</strong> — kompensasi jasa pengurusan, bukan bunga.</div></div>
         </div>
       </div>
-
-      <div class="section">
-        <div class="section-title">Keterlambatan Pembayaran</div>
-        <div class="warn-card"><div class="warn-card-title">⚠️ Denda Keterlambatan</div><div class="warn-card-body">Jika terlambat lebih dari <strong>3 hari</strong>, dikenakan denda <strong>Rp 2.500 per hari</strong> keterlambatan.</div></div>
-        <div class="ok-card"><div class="ok-card-title">✓ Dana Denda untuk Sosial</div><div class="ok-card-body">Denda <strong>tidak menjadi hak owner</strong> — disalurkan sebagai dana sosial kepada fakir miskin sesuai prinsip syariah.</div></div>
+      <div class="section"><div class="section-title">Keterlambatan Pembayaran</div>
+        <div class="warn-card"><div class="warn-card-title">⚠️ Denda Keterlambatan</div><div class="warn-card-body">Terlambat lebih dari <strong>3 hari</strong> → denda <strong>Rp 2.500/hari</strong>.</div></div>
+        <div class="ok-card"><div class="ok-card-title">✓ Dana Denda untuk Sosial</div><div class="ok-card-body">Denda tidak menjadi hak owner — disalurkan sebagai dana sosial.</div></div>
       </div>
-
-      <div class="section">
-        <div class="section-title">Ketentuan Penting</div>
-        <div class="info-card">
-          <div class="info-card-title">⚖️ Jika Nasabah Meninggal Dunia</div>
-          <div class="info-card-body item-list">
-            <div class="item"><div class="item-dot dot-teal"></div><span>Kewajiban pelunasan sisa dana talangan beralih kepada ahli waris yang sah</span></div>
-            <div class="item"><div class="item-dot dot-teal"></div><span>Ahli waris wajib melunasi seluruh sisa kewajiban sesuai catatan pembukuan</span></div>
-          </div>
-        </div>
-        <div class="info-card"><div class="info-card-title">🏛 Penyelesaian Sengketa</div><div class="info-card-body">Diselesaikan secara musyawarah terlebih dahulu. Jika tidak tercapai, melalui <strong>Basyarnas</strong> — keputusan final dan mengikat.</div></div>
+      <div class="section"><div class="section-title">Ketentuan Penting</div>
+        <div class="info-card"><div class="info-card-title">⚖️ Jika Nasabah Meninggal</div><div class="info-card-body">Kewajiban pelunasan beralih kepada ahli waris yang sah.</div></div>
+        <div class="info-card"><div class="info-card-title">🏛 Penyelesaian Sengketa</div><div class="info-card-body">Musyawarah → <strong>Basyarnas</strong> (final & mengikat)</div></div>
       </div>
-
-      <div class="cta">
-        <div class="cta-text">Butuh Dana Talangan?</div>
-        <div class="cta-sub">Ajukan sekarang melalui aplikasi KRESA</div>
-        <a href="https://kresa.online/" target="_blank" class="cta-btn">Ajukan Sekarang →</a>
-      </div>
+      <div class="cta"><div class="cta-text">Butuh Dana Talangan?</div><div class="cta-sub">Ajukan sekarang melalui aplikasi KRESA</div><a href="https://kresa.online/" target="_blank" class="cta-btn">Ajukan Sekarang →</a></div>
     </div>
 
     <!-- RAHN -->
     <div class="tab-pane" id="produk-rahn">
-      <div class="prod-header ph-yellow">
-        <div class="prod-icon pi-yellow">💎</div>
-        <div>
-          <div class="prod-akad c-yellow">Akad Qardh + Rahn + Ujrah</div>
-          <div class="prod-name">Gadai Syariah</div>
-          <div class="prod-desc">Nasabah mendapatkan pinjaman dengan menyerahkan barang jaminan. Pinjaman tanpa bunga, biaya yang ada adalah ujrah penjagaan barang — bukan riba.</div>
+      <div class="prod-header ph-yellow"><div class="prod-icon pi-yellow">💎</div><div>
+        <div class="prod-akad c-yellow">Akad Qardh + Rahn + Ujrah</div>
+        <div class="prod-name">Gadai Syariah</div>
+        <div class="prod-desc">Nasabah mendapatkan pinjaman dengan menyerahkan barang jaminan. Pinjaman tanpa bunga, biaya yang ada adalah ujrah penjagaan barang — bukan riba.</div>
+      </div></div>
+      <div class="section"><div class="section-title">3 Akad dalam Satu Produk</div>
+        <div class="info-card"><div class="info-card-body item-list">
+          <div class="item"><div class="item-dot dot-yellow"></div><span><strong>Qardh</strong> — Pinjaman tanpa bunga, hanya kembalikan nominal yang dipinjam</span></div>
+          <div class="item"><div class="item-dot dot-yellow"></div><span><strong>Rahn</strong> — Barang jaminan diserahkan ke owner selama masa gadai</span></div>
+          <div class="item"><div class="item-dot dot-yellow"></div><span><strong>Ujrah</strong> — Biaya penjagaan barang jaminan, berdiri sendiri, bukan bunga</span></div>
+        </div>
+        <div class="formula"><span class="formula-part fp-yellow">Pinjaman Pokok</span><span class="formula-op">+</span><span class="formula-part fp-purple">Biaya Penjagaan</span><span class="formula-op">=</span><span class="formula-part fp-green">Total Kewajiban</span></div>
         </div>
       </div>
-
-      <div class="section">
-        <div class="section-title">3 Akad dalam Satu Produk</div>
-        <div class="info-card">
-          <div class="info-card-body item-list">
-            <div class="item"><div class="item-dot dot-yellow"></div><span><strong>Qardh</strong> — Pinjaman tanpa bunga. Nasabah hanya wajib mengembalikan nominal yang dipinjam</span></div>
-            <div class="item"><div class="item-dot dot-yellow"></div><span><strong>Rahn</strong> — Barang jaminan diserahkan ke owner selama masa gadai sebagai penguat akad</span></div>
-            <div class="item"><div class="item-dot dot-yellow"></div><span><strong>Ujrah</strong> — Biaya penjagaan barang jaminan, berdiri sendiri dan bukan bunga</span></div>
-          </div>
-          <div class="formula">
-            <span class="formula-part fp-yellow">Pinjaman Pokok</span>
-            <span class="formula-op">+</span>
-            <span class="formula-part fp-purple">Biaya Penjagaan</span>
-            <span class="formula-op">=</span>
-            <span class="formula-part fp-green">Total Kewajiban</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="section">
-        <div class="section-title">Ketentuan Barang Jaminan</div>
+      <div class="section"><div class="section-title">Ketentuan Barang Jaminan</div>
         <div class="two-col">
-          <div class="info-card">
-            <div class="info-card-title">✓ Hak Nasabah</div>
-            <div class="info-card-body item-list">
-              <div class="item"><div class="item-dot dot-green"></div><span>Barang tetap milik nasabah</span></div>
-              <div class="item"><div class="item-dot dot-green"></div><span>Owner wajib jaga barang dengan baik</span></div>
-              <div class="item"><div class="item-dot dot-green"></div><span>Barang kembali setelah lunas (maks. 3 hari kerja)</span></div>
-            </div>
-          </div>
-          <div class="info-card">
-            <div class="info-card-title">⚠️ Ketentuan</div>
-            <div class="info-card-body item-list">
-              <div class="item"><div class="item-dot dot-yellow"></div><span>Nasabah tidak bisa pakai barang selama gadai</span></div>
-              <div class="item"><div class="item-dot dot-yellow"></div><span>Owner tidak boleh manfaatkan tanpa izin</span></div>
-              <div class="item"><div class="item-dot dot-yellow"></div><span>Nasabah jamin barang milik sah & bebas sengketa</span></div>
-            </div>
-          </div>
+          <div class="info-card"><div class="info-card-title">✓ Hak Nasabah</div><div class="info-card-body item-list">
+            <div class="item"><div class="item-dot dot-green"></div><span>Barang tetap milik nasabah</span></div>
+            <div class="item"><div class="item-dot dot-green"></div><span>Owner wajib jaga barang; kembali maks. 3 hari kerja setelah lunas</span></div>
+          </div></div>
+          <div class="info-card"><div class="info-card-title">⚠️ Ketentuan</div><div class="info-card-body item-list">
+            <div class="item"><div class="item-dot dot-yellow"></div><span>Nasabah tidak bisa pakai barang selama gadai</span></div>
+            <div class="item"><div class="item-dot dot-yellow"></div><span>Owner tidak boleh manfaatkan tanpa izin</span></div>
+          </div></div>
         </div>
       </div>
-
-      <div class="section">
-        <div class="section-title">Keterlambatan Pembayaran</div>
-        <div class="warn-card"><div class="warn-card-title">⚠️ Denda Keterlambatan</div><div class="warn-card-body">Jika terlambat lebih dari <strong>3 hari</strong>, dikenakan denda <strong>Rp 2.500 per hari</strong>. Biaya penjagaan tertunggak dapat dipotong dari nilai barang jaminan saat dijual.</div></div>
-        <div class="ok-card"><div class="ok-card-title">✓ Dana Denda untuk Sosial</div><div class="ok-card-body">Denda <strong>tidak menjadi hak owner</strong> — disalurkan sebagai dana sosial kepada fakir miskin sesuai prinsip syariah.</div></div>
+      <div class="section"><div class="section-title">Keterlambatan & Wanprestasi</div>
+        <div class="warn-card"><div class="warn-card-title">⚠️ Denda Keterlambatan</div><div class="warn-card-body">Terlambat lebih dari <strong>3 hari</strong> → denda <strong>Rp 2.500/hari</strong>. Biaya penjagaan tertunggak dapat dipotong dari nilai barang jaminan.</div></div>
+        <div class="info-card"><div class="info-card-body item-list">
+          <div class="item"><div class="item-dot dot-red"></div><span>Peringatan tertulis 3 kali dalam 30 hari → jika tetap tidak lunas, barang dijual</span></div>
+          <div class="item"><div class="item-dot dot-green"></div><span><strong>Sisa hasil penjualan dikembalikan kepada nasabah</strong></span></div>
+        </div></div>
       </div>
-
-      <div class="section">
-        <div class="section-title">Jika Tidak Lunas Sampai Jatuh Tempo</div>
-        <div class="info-card">
-          <div class="info-card-body item-list">
-            <div class="item"><div class="item-dot dot-red"></div><span>Owner memberikan peringatan tertulis <strong>3 kali dalam 30 hari</strong></span></div>
-            <div class="item"><div class="item-dot dot-red"></div><span>Jika tetap tidak dilunasi, barang jaminan dijual</span></div>
-            <div class="item"><div class="item-dot dot-yellow"></div><span>Hasil penjualan: lunasi pinjaman pokok → biaya penjagaan → biaya penjualan</span></div>
-            <div class="item"><div class="item-dot dot-green"></div><span><strong>Sisa hasil penjualan dikembalikan kepada nasabah</strong></span></div>
-          </div>
-        </div>
+      <div class="section"><div class="section-title">Ketentuan Penting</div>
+        <div class="info-card"><div class="info-card-title">⚖️ Jika Nasabah Meninggal</div><div class="info-card-body">Ahli waris boleh lunasi atau setujui penjualan barang — kelebihan hasil ke ahli waris.</div></div>
+        <div class="info-card"><div class="info-card-title">🏛 Penyelesaian Sengketa</div><div class="info-card-body">Musyawarah → <strong>Basyarnas</strong> (final & mengikat)</div></div>
       </div>
-
-      <div class="section">
-        <div class="section-title">Ketentuan Penting</div>
-        <div class="info-card">
-          <div class="info-card-title">⚖️ Jika Nasabah Meninggal Dunia</div>
-          <div class="info-card-body item-list">
-            <div class="item"><div class="item-dot dot-yellow"></div><span>Ahli waris berhak melunasi sisa hutang dan biaya penjagaan</span></div>
-            <div class="item"><div class="item-dot dot-yellow"></div><span>Jika ahli waris tidak bersedia, barang gadai dijual sesuai ketentuan syariah</span></div>
-            <div class="item"><div class="item-dot dot-green"></div><span>Kelebihan hasil penjualan diserahkan kepada ahli waris yang sah</span></div>
-          </div>
-        </div>
-        <div class="info-card"><div class="info-card-title">🏛 Penyelesaian Sengketa</div><div class="info-card-body">Diselesaikan secara musyawarah terlebih dahulu. Jika tidak tercapai, melalui <strong>Basyarnas</strong> — keputusan final dan mengikat.</div></div>
-      </div>
-
-      <div class="cta">
-        <div class="cta-text">Mau Gadaikan Barang?</div>
-        <div class="cta-sub">Ajukan sekarang melalui aplikasi KRESA</div>
-        <a href="https://kresa.online/" target="_blank" class="cta-btn">Ajukan Sekarang →</a>
-      </div>
+      <div class="cta"><div class="cta-text">Mau Gadaikan Barang?</div><div class="cta-sub">Ajukan sekarang melalui aplikasi KRESA</div><a href="https://kresa.online/" target="_blank" class="cta-btn">Ajukan Sekarang →</a></div>
     </div>
 
-  </div><!-- /content -->
+  </div>
 </div><!-- /page produk -->
 
 
+<!-- ══════════════════════════════════════
+     PAGE 3 · RINGKASAN KONTRAK
+══════════════════════════════════════ -->
+<div class="page" id="kontrak">
+  <div class="hero">
+    <div class="hero-icon">📄</div>
+    <h1>Ringkasan Kontrak</h1>
+    <p class="hero-sub">Surat Perjanjian Kerjasama Mitra · KRESA</p>
+  </div>
+  <div class="content">
+
+    <!-- Disclaimer banner -->
+    <div class="kontrak-banner">
+      <div class="kb-icon">ℹ️</div>
+      <div>
+        <div class="kb-title">Ringkasan informasi kontrak kerja partner</div>
+        <div class="kb-sub">Dokumen PDF resmi digenerate sistem KRESA saat penandatanganan. Nilai <strong style="color:var(--yellow)">margin sharing</strong> dan <strong style="color:var(--yellow)">jangka waktu</strong> bersifat fleksibel — ditetapkan sesuai kesepakatan para pihak dalam kontrak masing-masing.</div>
+        <span class="flex-badge">⚡ Margin Sharing Sesuai Kesepakatan Kontrak</span>
+      </div>
+    </div>
+
+    <!-- Ringkasan cepat -->
+    <div class="section">
+      <div class="section-title">Ringkasan Perjanjian</div>
+      <div class="kontrak-summary">
+        <div class="ks-label">Detail Kontrak Kerjasama</div>
+        <div class="ks-row"><span class="ks-key">Nama Dokumen</span><span class="ks-val">Surat Perjanjian Kerjasama Mitra</span></div>
+        <div class="ks-row"><span class="ks-key">Platform</span><span class="ks-val">KRESA (Kredit Syariah Arini)</span></div>
+        <div class="ks-row"><span class="ks-key">Pihak Pertama</span><span class="ks-val">Pemodal / Pemilik Usaha KRESA</span></div>
+        <div class="ks-row"><span class="ks-key">Pihak Kedua</span><span class="ks-val">Mitra Pemasaran (Partner)</span></div>
+        <div class="ks-row"><span class="ks-key">Status Mitra</span><span class="ks-val">Mitra Independen (bukan karyawan)</span></div>
+        <div class="ks-row"><span class="ks-key">Margin Sharing</span><span class="ks-flex">Sesuai kesepakatan dalam kontrak</span></div>
+        <div class="ks-row"><span class="ks-key">Jangka Waktu</span><span class="ks-flex">Sesuai kesepakatan (default 12 bulan)</span></div>
+        <div class="ks-row"><span class="ks-key">Pembagian Risiko Macet</span><span class="ks-val">50 : 50</span></div>
+        <div class="ks-row"><span class="ks-key">Pembayaran Margin</span><span class="ks-val">Maks. tgl 1 bulan berikutnya</span></div>
+        <div class="ks-row"><span class="ks-key">Penyelesaian Sengketa</span><span class="ks-val">Musyawarah → Basyarnas</span></div>
+        <div class="ks-row"><span class="ks-key">Format Dokumen</span><span class="ks-val">PDF Digital + Watermark KRESA</span></div>
+      </div>
+    </div>
+
+    <!-- Accordion pasal -->
+    <div class="section">
+      <div class="section-title">Isi Perjanjian — Pasal per Pasal</div>
+
+      <div class="pasal-card open" onclick="togglePasal(this)">
+        <div class="pasal-header"><div class="pasal-left"><span class="pasal-num">Pasal 1</span><span class="pasal-title">Definisi & Ruang Lingkup</span></div><span class="pasal-chevron">▾</span></div>
+        <div class="pasal-body">
+          <div class="pasal-item"><div class="pasal-dot"></div><span><strong>KRESA</strong> adalah platform keuangan syariah yang menyediakan layanan Murabahah, Dana Talangan, dan Gadai berbasis prinsip syariah Islam</span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span><strong>Mitra</strong> adalah individu yang berperan sebagai agen pemasaran tidak terikat (freelance) yang bertugas mencari dan merekomendasikan calon nasabah</span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span><strong>Nasabah</strong> adalah pihak yang mengajukan dan/atau menggunakan produk layanan KRESA atas rekomendasi Mitra</span></div>
+          <div class="pasal-item"><div class="pasal-dot teal"></div><span><strong>Margin Sharing</strong> adalah bagian keuntungan yang diberikan kepada Mitra atas setiap transaksi yang berhasil — besaran ditetapkan secara fleksibel sesuai kontrak masing-masing</span></div>
+        </div>
+      </div>
+
+      <div class="pasal-card" onclick="togglePasal(this)">
+        <div class="pasal-header"><div class="pasal-left"><span class="pasal-num">Pasal 2</span><span class="pasal-title">Jangka Waktu Perjanjian</span></div><span class="pasal-chevron">▾</span></div>
+        <div class="pasal-body">
+          <div class="pasal-item"><div class="pasal-dot teal"></div><span>Jangka waktu ditetapkan sesuai kesepakatan para pihak dan tercantum secara eksplisit pada dokumen kontrak masing-masing</span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Perjanjian dapat <strong>diperpanjang otomatis</strong> selama jangka waktu yang sama jika tidak ada pemberitahuan pengakhiran paling lambat <strong>30 hari sebelum</strong> tanggal berakhir</span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Setiap perpanjangan dilakukan dengan penandatanganan <strong>addendum</strong> yang merupakan bagian tidak terpisahkan dari perjanjian ini</span></div>
+        </div>
+      </div>
+
+      <div class="pasal-card" onclick="togglePasal(this)">
+        <div class="pasal-header"><div class="pasal-left"><span class="pasal-num">Pasal 3</span><span class="pasal-title">Tugas & Kewajiban Mitra</span></div><span class="pasal-chevron">▾</span></div>
+        <div class="pasal-body">
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Melakukan pemasaran produk KRESA secara aktif kepada calon nasabah potensial</span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Menjelaskan produk secara <strong>jujur dan transparan</strong> sesuai informasi resmi — dilarang memberikan janji yang melebihi ketentuan</span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Membantu calon nasabah dalam proses pengisian data dan pengajuan melalui aplikasi KRESA</span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Melakukan verifikasi awal identitas dan kelayakan calon nasabah sebelum diajukan ke Owner</span></div>
+          <div class="pasal-item"><div class="pasal-dot red"></div><span>Bertanggung jawab dalam penagihan dan edukasi pembayaran dari nasabah hingga proses pelunasan</span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Melaporkan perkembangan aktivitas pemasaran kepada Owner minimal <strong>1 kali per bulan</strong></span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Menjaga nama baik dan reputasi KRESA dalam setiap kegiatan pemasaran</span></div>
+        </div>
+      </div>
+
+      <div class="pasal-card" onclick="togglePasal(this)">
+        <div class="pasal-header"><div class="pasal-left"><span class="pasal-num">Pasal 4</span><span class="pasal-title">Hak & Kewajiban Pemodal</span></div><span class="pasal-chevron">▾</span></div>
+        <div class="pasal-body">
+          <div class="pasal-item"><div class="pasal-dot green"></div><span>Menyediakan akses penuh kepada Mitra terhadap aplikasi KRESA dan materi pemasaran resmi</span></div>
+          <div class="pasal-item"><div class="pasal-dot green"></div><span>Melakukan analisis kelayakan dan memberikan keputusan dalam waktu <strong>maks. 3 hari kerja</strong></span></div>
+          <div class="pasal-item"><div class="pasal-dot green"></div><span>Membayarkan Margin Sharing kepada Mitra paling lambat <strong>tanggal 1 bulan berikutnya</strong></span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Memberikan pelatihan dan pembekalan produk kepada Mitra secara jelas dan terperinci</span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Berhak menolak calon nasabah yang tidak memenuhi standar kelayakan tanpa mengurangi hak Mitra atas transaksi lain yang berhasil</span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Bertanggung jawab penuh atas seluruh keputusan pembiayaan dan operasional bisnis KRESA</span></div>
+        </div>
+      </div>
+
+      <div class="pasal-card" onclick="togglePasal(this)">
+        <div class="pasal-header"><div class="pasal-left"><span class="pasal-num">Pasal 5</span><span class="pasal-title">Margin Sharing (Bagi Hasil)</span></div><span class="pasal-chevron">▾</span></div>
+        <div class="pasal-body">
+          <div class="margin-box">
+            <div class="mb-label">Skema Margin Sharing</div>
+            <div class="mb-row"><span class="mb-key">Besaran</span><span class="mb-flex">Sesuai kesepakatan dalam kontrak (%)</span></div>
+            <div class="mb-row"><span class="mb-key">Dasar Hitung</span><span class="mb-val">% dari keuntungan bersih (net earnings) per transaksi</span></div>
+            <div class="mb-row"><span class="mb-key">Berlaku untuk</span><span class="mb-val">Murabahah · Dana Talang · Gadai (Rahn)</span></div>
+            <div class="mb-row"><span class="mb-key">Jadwal Bayar</span><span class="mb-val">Maks. tanggal 1 bulan berikutnya</span></div>
+            <div class="mb-row"><span class="mb-key">Jika Nasabah Macet</span><span class="mb-val">Ditangguhkan hingga nasabah lunas</span></div>
+          </div>
+          <div class="pasal-item"><div class="pasal-dot teal"></div><span>Margin Sharing dihitung dari total proyeksi keuntungan seluruh tenor yang berhasil berjalan</span></div>
+          <div class="pasal-item"><div class="pasal-dot teal"></div><span>Laporan rincian perhitungan disediakan secara transparan melalui aplikasi KRESA</span></div>
+          <div class="pasal-item"><div class="pasal-dot yellow"></div><span>Perubahan besaran Margin Sharing hanya dapat dilakukan atas kesepakatan kedua pihak melalui <strong>addendum perjanjian</strong>, berlaku efektif bulan berikutnya</span></div>
+        </div>
+      </div>
+
+      <div class="pasal-card" onclick="togglePasal(this)">
+        <div class="pasal-header"><div class="pasal-left"><span class="pasal-num">Pasal 5A</span><span class="pasal-title">Pembagian Risiko Gagal Bayar</span></div><span class="pasal-chevron">▾</span></div>
+        <div class="pasal-body">
+          <div class="risiko-grid">
+            <div class="risiko-card"><div class="risiko-num" style="color:var(--purple-light)">50%</div><div class="risiko-lbl">Ditanggung Pemodal<br>(Pihak Pertama)</div></div>
+            <div class="risiko-card"><div class="risiko-num" style="color:var(--teal)">50%</div><div class="risiko-lbl">Ditanggung Mitra<br>(Pihak Kedua)</div></div>
+          </div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Kerugian bersih yang dimaksud adalah nilai kerugian <strong>setelah dikurangi</strong> seluruh hasil penagihan, realisasi jaminan, dan pemulihan lainnya yang berhasil diperoleh</span></div>
+          <div class="pasal-item"><div class="pasal-dot teal"></div><span>Mekanisme penyelesaian dilakukan secara transparan berdasarkan data perhitungan yang dapat diverifikasi kedua belah pihak</span></div>
+        </div>
+      </div>
+
+      <div class="pasal-card" onclick="togglePasal(this)">
+        <div class="pasal-header"><div class="pasal-left"><span class="pasal-num">Pasal 6</span><span class="pasal-title">Produk yang Dipasarkan</span></div><span class="pasal-chevron">▾</span></div>
+        <div class="pasal-body">
+          <div class="pasal-item"><div class="pasal-dot blue"></div><span><strong>Jual Beli Kredit (Murabahah)</strong> — Pembelian barang (elektronik, perabot, dll.) dengan sistem angsuran 1–24 bulan</span></div>
+          <div class="pasal-item"><div class="pasal-dot teal"></div><span><strong>Dana Talangan</strong> — Pinjaman tunai jangka pendek dengan biaya jasa (ujrah) bukan bunga</span></div>
+          <div class="pasal-item"><div class="pasal-dot yellow"></div><span><strong>Gadai (Rahn)</strong> — Pinjaman dengan jaminan barang, biaya ijarah (penitipan) bukan bunga</span></div>
+        </div>
+      </div>
+
+      <div class="pasal-card" onclick="togglePasal(this)">
+        <div class="pasal-header"><div class="pasal-left"><span class="pasal-num">Pasal 7</span><span class="pasal-title">Larangan & Pembatasan</span></div><span class="pasal-chevron">▾</span></div>
+        <div class="pasal-body">
+          <div class="pasal-item"><div class="pasal-dot red"></div><span>Memungut biaya atau pungutan apapun dari calon nasabah tanpa persetujuan tertulis</span></div>
+          <div class="pasal-item"><div class="pasal-dot red"></div><span>Membuat perjanjian yang mengikat Pihak Pertama tanpa sepengetahuan Owner</span></div>
+          <div class="pasal-item"><div class="pasal-dot red"></div><span>Merekomendasikan calon nasabah yang diketahui memiliki itikad tidak baik atau data palsu</span></div>
+          <div class="pasal-item"><div class="pasal-dot red"></div><span>Memanfaatkan nama/logo KRESA untuk kepentingan pribadi di luar lingkup perjanjian</span></div>
+          <div class="pasal-item"><div class="pasal-dot red"></div><span>Memasarkan produk sejenis dari lembaga keuangan lain yang berkompetisi langsung</span></div>
+        </div>
+      </div>
+
+      <div class="pasal-card" onclick="togglePasal(this)">
+        <div class="pasal-header"><div class="pasal-left"><span class="pasal-num">Pasal 8</span><span class="pasal-title">Kerahasiaan Informasi</span></div><span class="pasal-chevron">▾</span></div>
+        <div class="pasal-body">
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Para pihak wajib menjaga kerahasiaan seluruh informasi termasuk <strong>data nasabah, strategi bisnis, dan sistem aplikasi KRESA</strong></span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Kewajiban kerahasiaan tetap berlaku <strong>2 tahun setelah berakhirnya perjanjian</strong></span></div>
+          <div class="pasal-item"><div class="pasal-dot red"></div><span>Pelanggaran dapat dikenakan sanksi sesuai UU Perlindungan Data Pribadi</span></div>
+        </div>
+      </div>
+
+      <div class="pasal-card" onclick="togglePasal(this)">
+        <div class="pasal-header"><div class="pasal-left"><span class="pasal-num">Pasal 9</span><span class="pasal-title">Status Hubungan Para Pihak</span></div><span class="pasal-chevron">▾</span></div>
+        <div class="pasal-body">
+          <div class="pasal-item"><div class="pasal-dot teal"></div><span>Mitra berkedudukan sebagai <strong>mitra independen</strong> — bukan karyawan, agen resmi, atau wakil hukum</span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Mitra tidak berhak membuat perjanjian yang mengikat secara hukum atas nama Pihak Pertama kecuali atas kuasa tertulis khusus</span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Mitra bertanggung jawab mandiri atas <strong>perpajakan, asuransi, dan kewajiban hukum</strong> lainnya</span></div>
+        </div>
+      </div>
+
+      <div class="pasal-card" onclick="togglePasal(this)">
+        <div class="pasal-header"><div class="pasal-left"><span class="pasal-num">Pasal 10</span><span class="pasal-title">Sanksi & Pemutusan Perjanjian</span></div><span class="pasal-chevron">▾</span></div>
+        <div class="pasal-body">
+          <div class="pasal-item"><div class="pasal-dot yellow"></div><span>Pelanggaran ketentuan → Peringatan tertulis pertama</span></div>
+          <div class="pasal-item"><div class="pasal-dot yellow"></div><span>Jika dalam 7 hari tidak diperbaiki → Peringatan kedua + pembekuan Margin Sharing sementara</span></div>
+          <div class="pasal-item"><div class="pasal-dot red"></div><span>Pemutusan <strong>seketika tanpa peringatan</strong> jika terbukti: penipuan/pemalsuan data, terima imbalan tidak sah, salah guna info rahasia, atau merusak nama baik KRESA</span></div>
+          <div class="pasal-item"><div class="pasal-dot green"></div><span>Mitra yang mengakhiri kontrak sukarela wajib memberi pemberitahuan <strong>30 hari sebelumnya</strong> — seluruh Margin Sharing tetap dibayarkan</span></div>
+        </div>
+      </div>
+
+      <div class="pasal-card" onclick="togglePasal(this)">
+        <div class="pasal-header"><div class="pasal-left"><span class="pasal-num">Pasal 11</span><span class="pasal-title">Force Majeure</span></div><span class="pasal-chevron">▾</span></div>
+        <div class="pasal-body">
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Salah satu pihak tidak dinyatakan wanprestasi apabila kegagalan disebabkan kejadian di luar kendali: bencana alam, pandemi, kebijakan pemerintah yang memaksa, dsb</span></div>
+          <div class="pasal-item"><div class="pasal-dot yellow"></div><span>Pihak yang mengalami force majeure wajib memberitahu pihak lain dalam <strong>maks. 3 hari kerja</strong> sejak kejadian</span></div>
+        </div>
+      </div>
+
+      <div class="pasal-card" onclick="togglePasal(this)">
+        <div class="pasal-header"><div class="pasal-left"><span class="pasal-num">Pasal 12</span><span class="pasal-title">Penyelesaian Perselisihan</span></div><span class="pasal-chevron">▾</span></div>
+        <div class="pasal-body">
+          <div class="pasal-item"><div class="pasal-dot green"></div><span>Perselisihan diselesaikan terlebih dahulu secara <strong>musyawarah untuk mufakat</strong> dalam 14 hari kalender</span></div>
+          <div class="pasal-item"><div class="pasal-dot teal"></div><span>Jika tidak mencapai kesepakatan → <strong>Badan Arbitrase Syariah Nasional (Basyarnas)</strong></span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Putusan Basyarnas bersifat <strong>final dan mengikat</strong>, tidak dapat diajukan banding</span></div>
+        </div>
+      </div>
+
+      <div class="pasal-card" onclick="togglePasal(this)">
+        <div class="pasal-header"><div class="pasal-left"><span class="pasal-num">Pasal 13–14</span><span class="pasal-title">Ketentuan Lain-lain & Penutup</span></div><span class="pasal-chevron">▾</span></div>
+        <div class="pasal-body">
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Perjanjian ini menggantikan semua perjanjian sebelumnya yang berkaitan dengan hal yang sama</span></div>
+          <div class="pasal-item"><div class="pasal-dot"></div><span>Perubahan isi perjanjian hanya dapat dilakukan dengan <strong>addendum tertulis yang ditandatangani</strong> kedua belah pihak</span></div>
+          <div class="pasal-item"><div class="pasal-dot teal"></div><span>Perjanjian tunduk pada <strong>hukum Negara Republik Indonesia</strong> dan <strong>prinsip-prinsip syariah Islam</strong></span></div>
+          <div class="pasal-item"><div class="pasal-dot green"></div><span>Ditandatangani Para Pihak dalam keadaan sehat jasmani dan rohani, atas dasar kerelaan penuh tanpa paksaan, dalam rangkap 2 (dua) yang masing-masing mempunyai kekuatan hukum yang sama</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta">
+      <div class="cta-text">Siap bergabung sebagai Partner KRESA?</div>
+      <div class="cta-sub">Daftar, tanda tangani kontrak, dan mulai dapatkan Margin Sharing</div>
+      <a href="https://kresa.online/" target="_blank" class="cta-btn">Daftar Sekarang →</a>
+    </div>
+
+  </div>
+</div><!-- /page kontrak -->
+
+
 <script>
-  // Main page toggle
   function showPage(id) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.mnav').forEach(n => n.classList.remove('active'));
     document.getElementById(id).classList.add('active');
-    const idx = {sop:0, produk:1};
+    const idx = { sop: 0, produk: 1, kontrak: 2 };
     document.querySelectorAll('.mnav')[idx[id]].classList.add('active');
-    window.scrollTo({top:0, behavior:'smooth'});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // Sub-tab toggle (namespaced per page)
   function showSubTab(page, tabId, idx) {
-    const ns = page + '-';
     document.querySelectorAll('#' + page + ' .tab-pane').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('#' + page + '-tabs .tab').forEach(t => t.classList.remove('active'));
-    document.getElementById(ns + tabId).classList.add('active');
+    document.getElementById(page + '-' + tabId).classList.add('active');
     document.querySelectorAll('#' + page + '-tabs .tab')[idx].classList.add('active');
+  }
+
+  function togglePasal(card) {
+    card.classList.toggle('open');
   }
 </script>
 </body>
